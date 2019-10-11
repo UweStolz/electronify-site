@@ -1,0 +1,7 @@
+**/*.*rc
+**/*.config*
+junit.xml
+**/types
+built
+dist_electron
+offline-cache

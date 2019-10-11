@@ -1,0 +1,35 @@
+{
+    "typeAcquisition": {
+        "enable": true
+    },
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "jsx": "preserve",
+        "importHelpers": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "outDir": "built",
+        "lib": [
+            "es5",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ],
+    },
+    "include": [
+        "**/*.ts",
+        "package.json"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist_electron",
+        "coverage"
+    ]
+}
