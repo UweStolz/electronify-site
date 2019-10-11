@@ -1,13 +1,12 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "electronify",
+  "version": "0.1.0",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz",
   "license": "CC0-1.0",
   "devDependencies": {
