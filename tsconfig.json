@@ -26,9 +26,10 @@
     },
     "include": [
         "bin",
+        "util/*.ts",
         "cli/*.ts",
         "src/*.ts",
-        "package.json"
+        "package.json",
     ],
     "exclude": [
         "node_modules",
