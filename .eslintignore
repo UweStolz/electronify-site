@@ -6,3 +6,4 @@ built
 dist_electron
 offline-cache
 bin/*
+.vscode
