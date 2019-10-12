@@ -2,7 +2,9 @@
   "name": "electronify",
   "description": "Electron wrapper for websites",
   "version": "0.1.0",
-  "main": "index.js",
+  "bin": {
+    "ca-merge": "./bin/index.js"
+  },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony index.js",
