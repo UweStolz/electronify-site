@@ -7,8 +7,8 @@
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "start": "node --harmony ./bin/index.js",
-    "start:dev": "ts-node ./bin/index.js",
+    "electronify": "node --harmony ./bin/index.js",
+    "electronify:dev": "ts-node ./bin/index.js",
     "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json",
     "dist": "electron-builder"
   },
