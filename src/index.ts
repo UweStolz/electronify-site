@@ -8,7 +8,7 @@ function createWindow(): void {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(app.getAppPath(), 'preload.js'),
       nodeIntegration: true,
     },
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : undefined,
