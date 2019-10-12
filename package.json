@@ -7,14 +7,15 @@
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "start": "node --harmony index.js",
-    "start:dev": "ts-node index.ts",
+    "start": "node --harmony ./bin/index.js",
+    "start:dev": "ts-node ./bin/index.js",
     "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json",
     "dist": "electron-builder"
   },
   "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz <example@mail.com>",
-  "license": "CC0-1.0",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.12",
@@ -29,6 +30,7 @@
     "eslint-plugin-import": "^2.18.2",
     "inquirer": "^7.0.0",
     "pino": "^5.13.4",
+    "pino-pretty": "^3.2.2",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4",
     "yargs": "^14.2.0"
