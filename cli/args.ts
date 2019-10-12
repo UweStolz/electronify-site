@@ -3,7 +3,7 @@
 import yargs from 'yargs';
 import { formatsForOs, allValidFormats } from '../util/values';
 
-export default async function initialize(args: string[]): Promise<any> {
+export default async function initialize(args: string[]): Promise<void> {
   // eslint-disable-next-line no-unused-expressions
   yargs
     .locale('en')
