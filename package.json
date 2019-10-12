@@ -2,7 +2,7 @@
   "name": "electronify",
   "description": "Electron wrapper for websites",
   "version": "0.1.0",
-  "main": "main.ts",
+  "main": "index.js",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "electron .",
