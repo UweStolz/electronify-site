@@ -22,7 +22,8 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "yargs": "^14.2.0"
   },
   "build": {
     "appId": "com.electron.${name}",
