@@ -3,7 +3,7 @@
 junit.xml
 **/types
 built
-dist_electron
+dist
 offline-cache
 bin/*
 .vscode
