@@ -24,7 +24,10 @@ export default async function execute(): Promise<void> {
     await logGreeting();
 
     const verboseFromCli = await collectArgumentFromCli('verbose');
-    if (verboseFromCli) logger.level = 'debug';
+    if (verboseFromCli) {
+      logger.level = 'debug';
+      process.env.DEBUG = 'electron-builder';
+    }
     const urlFromCli = await collectArgumentFromCli('url');
     const osFromCli = await collectArgumentFromCli('os');
     const formatFromCli = await collectArgumentFromCli('format');
