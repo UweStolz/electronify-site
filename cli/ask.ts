@@ -3,8 +3,8 @@ import { formatsForOs, architecture } from '../util/values';
 
 function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|boolean): string[] {
   let formats: string[] = [];
-  if (os === 'all') {
-    formats = formatsForOs.all;
+  if (os === 'generic') {
+    formats = formatsForOs.generic;
   } else if (includeGenericFormats) {
     // @ts-ignore
     formats = formats.concat(formatsForOs[os], formatsForOs.all);
@@ -18,7 +18,7 @@ function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|bo
 function formatChoice(os: string, includeGenericFormats: inquirer.Answers|boolean): string[]|undefined {
   let formats: string[]|undefined;
   switch (os) {
-    case 'all':
+    case 'generic':
       formats = getFormatsForOs(os);
       break;
     case 'linux':
