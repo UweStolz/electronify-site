@@ -7,7 +7,7 @@ function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|bo
     formats = formatsForOs.generic;
   } else if (includeGenericFormats) {
     // @ts-ignore
-    formats = formats.concat(formatsForOs[os], formatsForOs.all);
+    formats = formats.concat(formatsForOs[os], formatsForOs.generic);
   } else {
     // @ts-ignore
     formats = formatsForOs[os];
