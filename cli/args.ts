@@ -36,10 +36,12 @@ export async function initialize(args: string[]): Promise<void> {
       alias: 'a',
       type: 'string',
       choices: Object.values(architecture),
+      desciption: 'The architecture of your system.',
     })
     .option('verbose', {
       alias: 'v',
       type: 'boolean',
+      desciption: 'Activate DEBUG logging messages.',
     })
     .check((argument) => {
       if (argument.url) {
