@@ -35,14 +35,17 @@ export default async function execute(): Promise<void> {
     const formatFromCli = await collectArgumentFromCli('format');
     const archFromCli = await collectArgumentFromCli('arch');
 
-    if (!urlFromCli) await ask.forURL();
+    const urlOfChoice = urlFromCli || await ask.forURL();
     const osOfChoice = osFromCli || await ask.forOS();
-    const includeGenericFormats = formatFromCli ? false : await ask.forGenericFormats();
-    if (!formatFromCli) await ask.forFormat(osOfChoice, includeGenericFormats);
-    const architecture = archFromCli || await ask.forArch();
+    const includeGenericFormats = (formatFromCli || osOfChoice === 'generic') ? false : await ask.forGenericFormats();
+    const formatOfChoice = formatFromCli || await ask.forFormat(osOfChoice, includeGenericFormats);
+    const architectureOfChoice = archFromCli || await ask.forArch();
 
     logFarewell({
-      url: urlFromCli, os: osFromCli, format: formatFromCli, architecture,
+      url: urlOfChoice,
+      os: osOfChoice,
+      format: formatOfChoice,
+      architecture: architectureOfChoice,
     });
   } catch (error) {
     logger.error('An error occurred:');
