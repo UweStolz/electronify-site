@@ -34,21 +34,18 @@ async function preprocessData(choices: Choices): Promise<Choices> {
 export default async function buildArtifact(choices: Choices): Promise<void> {
   const { Platform } = builder;
   const data = await preprocessData(choices);
-  builder.build({
-    // @ts-ignore
-    targets: Platform[data.os].createTarget(null, data.architecture as number),
-    config: {
-      target: data.format,
-      productName: data.url,
-      appId: `com.electron.${data.url}`,
-      artifactName: `electronify-${data.url}.${data.format}`,
-    },
-  })
-    .then(() => {
-    // handle result
-    })
-    .catch((error) => {
-      logger.error('An error occurred while creating the artifact!');
-      logger.error(error);
+  try {
+    await builder.build({
+      // @ts-ignore
+      targets: Platform[data.os].createTarget(data.format, data.architecture as number),
+      config: {
+        productName: data.url,
+        appId: `com.electron.${data.url}`,
+        artifactName: `electronify-${data.url}.${data.format}`,
+      },
     });
+  } catch (error) {
+    logger.error('An error occurred while creating the artifact!');
+    logger.error(error);
+  }
 }
