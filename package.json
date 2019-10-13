@@ -17,6 +17,7 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.12",
     "@types/pino": "^5.8.12",

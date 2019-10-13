@@ -25,16 +25,12 @@
         ],
     },
     "include": [
-        "bin",
+        "./index.ts",
+        "bin/*",
         "builder/*.ts",
         "util/*.ts",
         "cli/*.ts",
         "src/*.ts",
         "package.json",
     ],
-    "exclude": [
-        "node_modules",
-        "dist_electron",
-        "coverage"
-    ]
 }
