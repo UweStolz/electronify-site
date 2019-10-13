@@ -3,7 +3,7 @@
   "description": "Electron wrapper for websites",
   "version": "0.1.0",
   "bin": {
-    "electronify": "./bin/index.js"
+    "electronify": "./bin/electronify.js"
   },
   "scripts": {
     "install:prod": "yarn install --production",
