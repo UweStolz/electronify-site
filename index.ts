@@ -42,9 +42,9 @@ export default async function execute(): Promise<void> {
       format: formatOfChoice,
       architecture: architectureOfChoice,
     };
-    logger.debug('Starting to build artifact');
+    logger.info('Starting to build artifact');
     await buildArtifact(choices);
-    logger.debug('Finished building artifact');
+    logger.info('Finished building artifact');
 
     logFarewell(choices);
   } catch (error) {
