@@ -26,6 +26,7 @@
     },
     "include": [
         "bin",
+        "builder/*.ts",
         "util/*.ts",
         "cli/*.ts",
         "src/*.ts",
