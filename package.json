@@ -9,7 +9,7 @@
     "postinstall": "electron-builder install-app-deps",
     "electronify": "node --harmony ./bin/index.js",
     "electronify:dev": "ts-node ./bin/index.js",
-    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json",
+    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json && cp -r ./offline-cache ./built/",
     "dist": "electron-builder"
   },
   "repository": "https://github.com/UweStolz/electronify",
