@@ -4,13 +4,21 @@ import {
   initialize, collectArgumentFromCli,
 } from './cli/args';
 
+type Choices = {
+  url: string;
+  os: string;
+  format: string;
+}
+
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
   logger.info('Hello there..');
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
 }
 
-function logFarewell(): void {
+function logFarewell(choices: Choices): void {
+  logger.info('Your settings are:');
+  logger.info(choices);
   logger.info('Have fun!');
 }
 
@@ -28,7 +36,7 @@ export default async function execute(): Promise<void> {
     const includeGenericFormats = formatFromCli ? false : await ask.forGenericFormats();
     if (!formatFromCli) await ask.forFormat(osOfChoice, includeGenericFormats);
 
-    logFarewell();
+    logFarewell({ url: urlFromCli, os: osFromCli, format: formatFromCli });
   } catch (error) {
     logger.error('An error occurred:');
     logger.error(error);
