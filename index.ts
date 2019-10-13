@@ -4,7 +4,7 @@ import {
   initialize, collectArgumentFromCli,
 } from './cli/args';
 import { Choices } from './util/values';
-import buildArtifact from './builder/electronify';
+import buildArtifact from './builder';
 
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
