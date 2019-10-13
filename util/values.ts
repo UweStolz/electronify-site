@@ -12,4 +12,12 @@ const allValidFormats = [
 
 const architecture = ['x64', 'ia32', 'armv7l', 'arm64'];
 
+export type Choices = {
+  url: string;
+  os: string;
+  format: string;
+  architecture: string;
+}
+
+
 export { formatsForOs, allValidFormats, architecture };

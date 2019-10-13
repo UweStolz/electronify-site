@@ -1,17 +1,20 @@
 
 import builder from 'electron-builder';
+import { Choices } from '../util/values';
 
 const { Platform } = builder;
 
-builder.build({
-  targets: Platform.LINUX.createTarget(),
-  config: {
-    productName: 'someName',
-  },
-})
-  .then(() => {
-    // handle result
+export default async function buildArtifact(choices: Choices): Promise<void> {
+  builder.build({
+    targets: Platform.LINUX.createTarget(),
+    config: {
+      productName: 'someName',
+    },
   })
-  .catch((error) => {
+    .then(() => {
+    // handle result
+    })
+    .catch((error) => {
     // handle error
-  });
+    });
+}

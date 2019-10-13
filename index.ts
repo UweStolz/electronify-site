@@ -3,13 +3,8 @@ import * as ask from './cli/ask';
 import {
   initialize, collectArgumentFromCli,
 } from './cli/args';
-
-type Choices = {
-  url: string;
-  os: string;
-  format: string;
-  architecture: string;
-}
+import { Choices } from './util/values';
+import buildArtifact from './builder';
 
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
@@ -41,12 +36,17 @@ export default async function execute(): Promise<void> {
     const formatOfChoice = formatFromCli || await ask.forFormat(osOfChoice, includeGenericFormats);
     const architectureOfChoice = archFromCli || await ask.forArch();
 
-    logFarewell({
+    const choices: Choices = {
       url: urlOfChoice,
       os: osOfChoice,
       format: formatOfChoice,
       architecture: architectureOfChoice,
-    });
+    };
+    logger.debug('Starting to build artifact');
+    await buildArtifact(choices);
+    logger.debug('Finished building artifact');
+
+    logFarewell(choices);
   } catch (error) {
     logger.error('An error occurred:');
     logger.error(error);
