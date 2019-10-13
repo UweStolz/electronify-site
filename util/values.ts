@@ -16,7 +16,7 @@ export type Choices = {
   url: string;
   os: string;
   format: string;
-  architecture: string;
+  architecture: string|number;
 }
 
 

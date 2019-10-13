@@ -1,5 +1,5 @@
 
-import builder from 'electron-builder';
+import * as builder from 'electron-builder';
 import { Choices } from '../util/values';
 import logger from '../cli/logger';
 
@@ -14,11 +14,19 @@ function getBaseName(url: string): string {
 async function preprocessData(choices: Choices): Promise<Choices> {
   const OS: string = choices.os.toUpperCase();
   const name: string = getBaseName(choices.url);
+  const archMap = {
+    ia32: 0,
+    x64: 1,
+    armv7l: 2,
+    arm64: 3,
+  };
+  // @ts-ignore
+  const arch: number = archMap[choices.architecture];
   const data: Choices = {
     url: name,
     os: OS,
     format: choices.format,
-    architecture: choices.architecture,
+    architecture: arch,
   };
   return data;
 }
@@ -28,8 +36,9 @@ export default async function buildArtifact(choices: Choices): Promise<void> {
   const data = await preprocessData(choices);
   builder.build({
     // @ts-ignore
-    targets: Platform[data.OS].createTarget(),
+    targets: Platform[data.os].createTarget(null, data.architecture as number),
     config: {
+      target: data.format,
       productName: data.url,
       appId: `com.electron.${data.url}`,
       artifactName: `electronify-${data.url}.${data.format}`,
