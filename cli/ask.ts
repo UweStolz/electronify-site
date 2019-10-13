@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import { formatsForOs } from '../util/values';
 
-function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers): string[] {
+function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|boolean): string[] {
   let formats: string[] = [];
   if (os === 'all') {
     formats = formatsForOs.all;
@@ -15,7 +15,7 @@ function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers): 
   return formats;
 }
 
-function formatChoice(os: string, includeGenericFormats: inquirer.Answers): string[]|undefined {
+function formatChoice(os: string, includeGenericFormats: inquirer.Answers|boolean): string[]|undefined {
   let formats: string[]|undefined;
   switch (os) {
     case 'all':
@@ -70,7 +70,7 @@ export async function forGenericFormats(): Promise<inquirer.Answers> {
   });
 }
 
-export async function forFormat(os: inquirer.Answers, includeGenericFormats: inquirer.Answers): Promise<inquirer.Answers> {
+export async function forFormat(os: inquirer.Answers, includeGenericFormats: inquirer.Answers|boolean): Promise<inquirer.Answers> {
   const osOfChoice = os as unknown as string;
   return ask({
     message: 'What format do you whish?',

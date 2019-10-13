@@ -1,11 +1,19 @@
 #!/usr/bin/env node
 
-import yargs from 'yargs';
+import yargs, { } from 'yargs';
 import { formatsForOs, allValidFormats } from '../util/values';
 
-export default async function initialize(args: string[]): Promise<void> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let program: any;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function collectArgumentFromCli(argument: string): Promise<any> {
+  return program[argument];
+}
+
+export async function initialize(args: string[]): Promise<void> {
   // eslint-disable-next-line no-unused-expressions
-  yargs
+  program = yargs
     .locale('en')
     .option('url', {
       alias: 'u',

@@ -1,7 +1,8 @@
 import logger from './cli/logger';
 import * as ask from './cli/ask';
-import initialize from './cli/args';
-
+import {
+  initialize, collectArgumentFromCli,
+} from './cli/args';
 
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
@@ -17,10 +18,16 @@ export default async function execute(): Promise<void> {
   try {
     await initialize(process.argv);
     await logGreeting();
-    await ask.forURL();
-    const osOfChoice = await ask.forOS();
-    const includeGenericFormats = await ask.forGenericFormats();
-    await ask.forFormat(osOfChoice, includeGenericFormats);
+
+    const urlFromCli = await collectArgumentFromCli('url');
+    const osFromCli = await collectArgumentFromCli('os');
+    const formatFromCli = await collectArgumentFromCli('format');
+
+    if (!urlFromCli) await ask.forURL();
+    const osOfChoice = osFromCli || await ask.forOS();
+    const includeGenericFormats = formatFromCli ? false : await ask.forGenericFormats();
+    if (!formatFromCli) await ask.forFormat(osOfChoice, includeGenericFormats);
+
     logFarewell();
   } catch (error) {
     logger.error('An error occurred:');
