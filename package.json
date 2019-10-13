@@ -34,13 +34,5 @@
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4",
     "yargs": "^14.2.0"
-  },
-  "build": {
-    "appId": "com.electron.${name}",
-    "linux": {
-      "target": [
-        "rpm"
-      ]
-    }
   }
 }
