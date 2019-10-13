@@ -2,6 +2,7 @@
   "name": "electronify",
   "description": "Electron wrapper for websites",
   "version": "0.1.0",
+  "main": "./bin/electronify.js",
   "bin": {
     "electronify": "./bin/electronify.js"
   },
