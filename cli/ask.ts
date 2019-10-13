@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { formatsForOs } from '../util/values';
+import { formatsForOs, architecture } from '../util/values';
 
 function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|boolean): string[] {
   let formats: string[] = [];
@@ -75,6 +75,15 @@ export async function forFormat(os: inquirer.Answers, includeGenericFormats: inq
   return ask({
     message: 'What format do you whish?',
     choices: formatChoice(osOfChoice, includeGenericFormats),
+    type: 'list',
+    validate: (answer) => answer.length > 0,
+  });
+}
+
+export async function forArch(): Promise<inquirer.Answers> {
+  return ask({
+    message: 'What architecture is the package for?',
+    choices: Object.values(architecture),
     type: 'list',
     validate: (answer) => answer.length > 0,
   });

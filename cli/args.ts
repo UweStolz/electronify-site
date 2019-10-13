@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import yargs, { } from 'yargs';
-import { formatsForOs, allValidFormats } from '../util/values';
+import { formatsForOs, allValidFormats, architecture } from '../util/values';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let program: any;
@@ -31,6 +31,15 @@ export async function initialize(args: string[]): Promise<void> {
       type: 'string',
       choices: Object.values(allValidFormats),
       description: 'Your desired target format.',
+    })
+    .option('arch', {
+      alias: 'a',
+      type: 'string',
+      choices: Object.values(architecture),
+    })
+    .option('verbose', {
+      alias: 'v',
+      type: 'boolean',
     })
     .check((argument) => {
       if (argument.url) {

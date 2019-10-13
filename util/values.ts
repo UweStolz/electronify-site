@@ -10,4 +10,6 @@ const allValidFormats = [
   'dmg', 'pkg', 'mas', 'appimage', 'snap', 'deb', 'rpm', 'freebsd', 'pacman',
   'p5p', 'apk', 'nsis', 'nsis-web', 'portable', 'appx', 'msi', 'squirrel'];
 
-export { formatsForOs, allValidFormats };
+const architecture = ['x64', 'ia32', 'armv7l', 'arm64'];
+
+export { formatsForOs, allValidFormats, architecture };
