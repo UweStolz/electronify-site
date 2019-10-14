@@ -7,11 +7,11 @@
     "electronify": "./bin/electronify.js"
   },
   "scripts": {
-    "install:prod": "yarn install --production",
+    "install:prod": "yarn install --offline",
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
     "electronify:dev": "ts-node ./bin/electronify.js",
-    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json && cp -r ./offline-cache ./built/",
+    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json && cp -r ./offline-cache ./built/ && cp ./yarn.lock ./built/",
     "dist": "electron-builder"
   },
   "repository": "https://github.com/UweStolz/electronify",
@@ -19,14 +19,14 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "electron": "^6.0.12",
-    "electron-builder": "^21.2.0",
     "inquirer": "^7.0.0",
     "pino": "^5.13.4",
     "pino-pretty": "^3.2.2",
     "yargs": "^14.2.0"
   },
   "devDependencies": {
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
     "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.12",
