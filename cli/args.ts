@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import yargs, { } from 'yargs';
+import yargs from 'yargs';
 import { formatsForOs, allValidFormats, architecture } from '../util/values';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
