@@ -9,8 +9,8 @@
   "scripts": {
     "install:prod": "yarn install --production",
     "postinstall": "electron-builder install-app-deps",
-    "start": "node --harmony ./bin/index.js",
-    "electronify:dev": "ts-node ./bin/index.js",
+    "start": "node --harmony ./bin/electronify.js",
+    "electronify:dev": "ts-node ./bin/electronify.js",
     "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json && cp -r ./offline-cache ./built/",
     "dist": "electron-builder"
   },
