@@ -1,14 +1,19 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs';
-import { formatsForOs, allValidFormats, architecture } from '../util/values';
+import {
+  formatsForOs, allValidFormats, architecture, Args,
+} from '../util/values';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let program: any;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function collectArgumentFromCli(argument: string): Promise<any> {
-  return program[argument];
+export async function collectArgumentsFromCli(argumentsToCollect: string[]): Promise<Args> {
+  const argumentsFromCli: Args = {};
+  argumentsToCollect.forEach((argument: string) => {
+    argumentsFromCli[argument] = program[argument];
+  });
+  return argumentsFromCli;
 }
 
 export async function initialize(args: string[]): Promise<void> {

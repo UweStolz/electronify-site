@@ -3,9 +3,7 @@ import { formatsForOs, architecture } from '../util/values';
 
 function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|boolean): string[] {
   let formats: string[] = [];
-  if (os === 'generic') {
-    formats = formatsForOs.generic;
-  } else if (includeGenericFormats) {
+  if (includeGenericFormats) {
     // @ts-ignore
     formats = formats.concat(formatsForOs[os], formatsForOs.generic);
   } else {
@@ -56,7 +54,7 @@ export async function forURL(): Promise <inquirer.Answers> {
 export async function forOS(): Promise<inquirer.Answers> {
   return ask({
     message: 'What is your operating system?',
-    choices: Object.keys(formatsForOs),
+    choices: ['macos', 'linux', 'windows'],
     type: 'list',
     validate: (answer) => answer.length > 0,
   });
@@ -70,7 +68,7 @@ export async function forGenericFormats(): Promise<inquirer.Answers> {
   });
 }
 
-export async function forFormat(os: inquirer.Answers, includeGenericFormats: inquirer.Answers|boolean): Promise<inquirer.Answers> {
+export async function forFormat(os: inquirer.Answers|string, includeGenericFormats: inquirer.Answers|boolean): Promise<inquirer.Answers> {
   const osOfChoice = os as unknown as string;
   return ask({
     message: 'What format do you whish?',

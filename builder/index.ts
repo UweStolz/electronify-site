@@ -13,7 +13,7 @@ function getBaseName(url: string): string {
 
 async function preprocessData(choices: Choices): Promise<Choices> {
   const OS: string = choices.os.toUpperCase();
-  const name: string = getBaseName(choices.url);
+  const name: string = getBaseName(choices.url as string);
   const archMap = {
     ia32: 0,
     x64: 1,
@@ -37,9 +37,9 @@ export default async function buildArtifact(choices: Choices): Promise<void> {
   try {
     await builder.build({
       // @ts-ignore
-      targets: Platform[data.os].createTarget(data.format, data.architecture as number),
+      targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
       config: {
-        productName: data.url,
+        productName: data.url as string,
         appId: `com.electron.${data.url}`,
         artifactName: `electronify-${data.url}.${data.format}`,
       },

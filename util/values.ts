@@ -1,3 +1,5 @@
+import { Answers } from 'inquirer';
+
 const formatsForOs = {
   generic: ['7z', 'zip', 'tar.xz', 'tar.7z', 'tar.lz', 'tar.gz', 'tar.bz2', 'dir'],
   macos: ['dmg', 'pkg', 'mas'],
@@ -13,11 +15,19 @@ const allValidFormats = [
 const architecture = ['x64', 'ia32', 'armv7l', 'arm64'];
 
 export type Choices = {
-  url: string;
-  os: string;
-  format: string;
-  architecture: string|number;
+  url: string|Answers;
+  os: string |Answers;
+  format: string|Answers;
+  architecture: string|number|Answers;
 }
 
+export interface Args {
+  [key: string]: string|undefined;
+  url?: string;
+  os?: string;
+  format?: string;
+  arch?: string;
+  verbose?: string;
+}
 
 export { formatsForOs, allValidFormats, architecture };

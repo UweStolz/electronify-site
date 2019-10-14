@@ -1,7 +1,7 @@
 import logger from './cli/logger';
 import * as ask from './cli/ask';
 import {
-  initialize, collectArgumentFromCli,
+  initialize, collectArgumentsFromCli,
 } from './cli/args';
 import { Choices } from './util/values';
 import buildArtifact from './builder';
@@ -23,21 +23,17 @@ export default async function execute(): Promise<void> {
     await initialize(process.argv);
     await logGreeting();
 
-    const verboseFromCli = await collectArgumentFromCli('verbose');
-    if (verboseFromCli) {
+    const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch']);
+    if (argsFromCli.verbose) {
       logger.level = 'debug';
       process.env.DEBUG = 'electron-builder';
     }
-    const urlFromCli = await collectArgumentFromCli('url');
-    const osFromCli = await collectArgumentFromCli('os');
-    const formatFromCli = await collectArgumentFromCli('format');
-    const archFromCli = await collectArgumentFromCli('arch');
 
-    const urlOfChoice = urlFromCli || await ask.forURL();
-    const osOfChoice = osFromCli || await ask.forOS();
-    const includeGenericFormats = (formatFromCli || osOfChoice === 'generic') ? false : await ask.forGenericFormats();
-    const formatOfChoice = formatFromCli || await ask.forFormat(osOfChoice, includeGenericFormats);
-    const architectureOfChoice = archFromCli || await ask.forArch();
+    const urlOfChoice = argsFromCli.url || await ask.forURL();
+    const osOfChoice = argsFromCli.os || await ask.forOS();
+    const includeGenericFormats = (argsFromCli.format || osOfChoice === 'generic') ? false : await ask.forGenericFormats();
+    const formatOfChoice = argsFromCli.format || await ask.forFormat(osOfChoice, includeGenericFormats);
+    const architectureOfChoice = argsFromCli.arch || await ask.forArch();
 
     const choices: Choices = {
       url: urlOfChoice,
