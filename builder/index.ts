@@ -1,7 +1,10 @@
 
 import * as builder from 'electron-builder';
+import { resolve } from 'path';
 import { Choices } from '../util/values';
 import logger from '../cli/logger';
+
+const path = resolve();
 
 function getBaseName(url: string): string {
   const host = new URL(url).hostname;
@@ -39,6 +42,9 @@ export default async function buildArtifact(choices: Choices): Promise<void> {
       // @ts-ignore
       targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
       config: {
+        directories: {
+          app: `${path}/app`,
+        },
         productName: data.url as string,
         appId: `com.electron.${data.url}`,
         artifactName: `electronify-${data.url}.${data.format}`,
