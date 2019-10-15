@@ -1,10 +1,13 @@
 {
     "name": "e-app",
     "version": "0.1.0",
-    "main": "./index.js",
+    "main": "index.js",
     "author": "Uwe Stolz <example@mail.com>",
     "license": "UNLICENSED",
     "private": true,
+    "scripts": {
+        "start": "electron ."
+    },
     "devDependencies": {
         "electron": "^6.0.12"
     }
