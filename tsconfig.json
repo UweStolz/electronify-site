@@ -30,7 +30,7 @@
         "builder/*.ts",
         "util/*.ts",
         "cli/*.ts",
-        "src/*.ts",
+        "app/*.ts",
         "package.json",
     ],
 }
