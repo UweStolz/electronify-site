@@ -11,8 +11,9 @@
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
     "start:dev": "ts-node ./bin/electronify.js",
-    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json && cp -r ./offline-cache ./built/ && cp ./yarn.lock ./built/",
-    "compile:watch": "rm -rf ./built && yarn run tsc -w -p ./tsconfig.json && cp -r ./offline-cache ./built/ && cp ./yarn.lock ./built/"
+    "copy-lock-files": "cp ./yarn.lock ./built/yarn.lock && cp ./app/yarn.lock ./built/app/yarn.lock",
+    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json",
+    "compile:watch": "rm -rf ./built && yarn run tsc -w -p ./tsconfig.json"
   },
   "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz <example@mail.com>",
