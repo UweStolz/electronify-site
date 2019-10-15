@@ -10,9 +10,9 @@
     "install:prod": "yarn install --offline",
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
-    "electronify:dev": "ts-node ./bin/electronify.js",
+    "start:dev": "ts-node ./bin/electronify.js",
     "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json && cp -r ./offline-cache ./built/ && cp ./yarn.lock ./built/",
-    "dist": "electron-builder"
+    "compile:watch": "rm -rf ./built && yarn run tsc -w -p ./tsconfig.json && cp -r ./offline-cache ./built/ && cp ./yarn.lock ./built/"
   },
   "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz <example@mail.com>",
