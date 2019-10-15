@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import path from 'path';
+import { join } from 'path';
 
 let win: BrowserWindow | null = null;
 
@@ -8,7 +8,7 @@ function createWindow(): void {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(app.getAppPath(), 'preload.js'),
+      preload: join(app.getAppPath(), 'preload.js'),
       nodeIntegration: true,
     },
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : undefined,
