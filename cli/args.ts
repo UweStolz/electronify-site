@@ -2,14 +2,14 @@
 
 import yargs from 'yargs';
 import {
-  formatsForOs, allValidFormats, architecture, Args,
+  formatsForOs, allValidFormats, architecture,
 } from '../util/values';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let program: any;
 
-export async function collectArgumentsFromCli(argumentsToCollect: string[]): Promise<Args> {
-  const argumentsFromCli: Args = {};
+export async function collectArgumentsFromCli(argumentsToCollect: string[]): Promise<Electronify.Args> {
+  const argumentsFromCli: Electronify.Args = {};
   argumentsToCollect.forEach((argument: string) => {
     argumentsFromCli[argument] = program[argument];
   });

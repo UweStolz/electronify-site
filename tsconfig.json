@@ -23,6 +23,10 @@
             "dom.iterable",
             "scripthost"
         ],
+        "typeRoots": [
+            "node_modules/@types",
+            "types"
+        ]
     },
     "include": [
         "./index.ts",

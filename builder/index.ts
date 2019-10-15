@@ -1,7 +1,6 @@
 
 import * as builder from 'electron-builder';
 import { resolve } from 'path';
-import { Choices } from '../util/values';
 import logger from '../cli/logger';
 
 const path = resolve();
@@ -14,7 +13,7 @@ function getBaseName(url: string): string {
   return baseName;
 }
 
-async function preprocessData(choices: Choices): Promise<Choices> {
+async function preprocessData(choices: Electronify.Choices): Promise<Electronify.Choices> {
   const OS: string = choices.os.toUpperCase();
   const name: string = getBaseName(choices.url as string);
   const archMap = {
@@ -25,7 +24,7 @@ async function preprocessData(choices: Choices): Promise<Choices> {
   };
   // @ts-ignore
   const arch: number = archMap[choices.architecture];
-  const data: Choices = {
+  const data: Electronify.Choices = {
     url: name,
     os: OS,
     format: choices.format,
@@ -34,7 +33,7 @@ async function preprocessData(choices: Choices): Promise<Choices> {
   return data;
 }
 
-export default async function buildArtifact(choices: Choices): Promise<void> {
+export default async function buildArtifact(choices: Electronify.Choices): Promise<void> {
   const { Platform } = builder;
   const data = await preprocessData(choices);
   try {
