@@ -18,12 +18,7 @@
   "author": "Uwe Stolz <example@mail.com>",
   "license": "UNLICENSED",
   "private": true,
-  
   "devDependencies": {
-    "inquirer": "^7.0.0",
-    "pino": "^5.13.4",
-    "pino-pretty": "^3.2.2",
-    "yargs": "^14.2.0",
     "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.12",
@@ -36,8 +31,12 @@
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "inquirer": "^7.0.0",
+    "pino": "^5.13.4",
+    "pino-pretty": "^3.2.2",
     "ts-node": "^8.4.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "yargs": "^14.2.0"
   }
 }
