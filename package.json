@@ -20,7 +20,7 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@types/fs-extra": "^8.0.0",
+    "@types/fs-extra": "^8.0.1",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.12",
     "@types/pino": "^5.8.12",
@@ -32,6 +32,7 @@
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
     "pino": "^5.13.4",
     "pino-pretty": "^3.2.2",
