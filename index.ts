@@ -3,7 +3,6 @@ import * as ask from './cli/ask';
 import {
   initialize, collectArgumentsFromCli,
 } from './cli/args';
-import { Choices } from './util/values';
 import buildArtifact from './builder';
 
 function logGreeting(): void {
@@ -12,7 +11,7 @@ function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
 }
 
-function logFarewell(choices: Choices): void {
+function logFarewell(choices: Electronify.Choices): void {
   logger.info('Your settings are:');
   logger.info(choices);
   logger.info('Have fun!');
@@ -35,7 +34,7 @@ export default async function execute(): Promise<void> {
     const formatOfChoice = argsFromCli.format || await ask.forFormat(osOfChoice, includeGenericFormats);
     const architectureOfChoice = argsFromCli.arch || await ask.forArch();
 
-    const choices: Choices = {
+    const choices: Electronify.Choices = {
       url: urlOfChoice,
       os: osOfChoice,
       format: formatOfChoice,
