@@ -35,6 +35,7 @@
         "util/*.ts",
         "cli/*.ts",
         "app/*.ts",
+        "app/config.json",
         "app/package.json",
         "package.json",
     ],
