@@ -10,5 +10,8 @@
     },
     "devDependencies": {
         "electron": "^6.0.12"
+    },
+    "dependencies": {
+        "tslib": "^1.10.0"
     }
 }
