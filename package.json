@@ -2,18 +2,18 @@
   "name": "electronify",
   "description": "Electron wrapper for websites",
   "version": "0.1.0",
-  "main": "./bin/electronify.js",
+  "main": "./built/bin/electronify.js",
   "bin": {
-    "electronify": "./bin/electronify.js"
+    "electronify": "./built/bin/electronify.js"
   },
   "scripts": {
     "install:prod": "yarn install --offline",
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
     "start:dev": "ts-node ./bin/electronify.js",
-    "copy-lock-files": "cp ./yarn.lock ./built/yarn.lock && cp ./app/yarn.lock ./built/app/yarn.lock",
-    "compile": "rm -rf ./built && yarn run tsc -p ./tsconfig.json",
-    "compile:watch": "rm -rf ./built && yarn run tsc -w -p ./tsconfig.json"
+    "copy-lock-files": "yarn run ncp ./yarn.lock ./built/yarn.lock && yarn run ncp ./app/yarn.lock ./built/app/yarn.lock",
+    "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.json && yarn copy-lock-files",
+    "compile:watch": "yarn run rimraf ./built && yarn run tsc -w -p ./tsconfig.json"
   },
   "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz <example@mail.com>",
@@ -34,8 +34,10 @@
     "eslint-plugin-import": "^2.18.2",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
+    "ncp": "^2.0.0",
     "pino": "^5.13.4",
     "pino-pretty": "^3.2.2",
+    "rimraf": "^3.0.0",
     "ts-node": "^8.4.1",
     "tslib": "^1.10.0",
     "typescript": "^3.6.4",
