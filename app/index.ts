@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
+import config from './config.json';
 
 let win: BrowserWindow | null = null;
 
@@ -14,7 +15,7 @@ function createWindow(): void {
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : undefined,
     // frame: process.platform === 'darwin',
   });
-  win.loadURL('https://netflix.com');
+  win.loadURL(config.url);
 
   win.on('closed', (): void => {
     win = null;

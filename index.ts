@@ -1,3 +1,4 @@
+import { writeJSON } from 'fs-extra';
 import logger from './cli/logger';
 import * as ask from './cli/ask';
 import {
@@ -40,6 +41,7 @@ export default async function execute(): Promise<void> {
       format: formatOfChoice,
       architecture: architectureOfChoice,
     };
+    await writeJSON('./app/config.json', { url: choices.url });
     logger.info('Starting to build artifact');
     await buildArtifact(choices);
     logger.info('Finished building artifact');
