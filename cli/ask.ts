@@ -13,24 +13,8 @@ function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|bo
   return formats;
 }
 
-function formatChoice(os: string, includeGenericFormats: inquirer.Answers|boolean): string[]|undefined {
-  let formats: string[]|undefined;
-  switch (os) {
-    case 'generic':
-      formats = getFormatsForOs(os);
-      break;
-    case 'linux':
-      formats = getFormatsForOs(os, includeGenericFormats);
-      break;
-    case 'macos':
-      formats = getFormatsForOs(os, includeGenericFormats);
-      break;
-    case 'windows':
-      formats = getFormatsForOs(os, includeGenericFormats);
-      break;
-    default:
-      break;
-  }
+function formatChoice(os: string, includeGenericFormats: inquirer.Answers|boolean): string[] {
+  const formats: string[] = getFormatsForOs(os, includeGenericFormats);
   return formats;
 }
 
