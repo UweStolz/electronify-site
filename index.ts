@@ -13,8 +13,7 @@ function logGreeting(): void {
 }
 
 function logFarewell(choices: Electronify.Choices): void {
-  logger.info('Your settings are:');
-  logger.info(choices);
+  logger.info(choices, 'Your settings are:');
   logger.info('Have fun!');
 }
 
@@ -23,7 +22,7 @@ export default async function execute(): Promise<void> {
     await initialize(process.argv);
     await logGreeting();
 
-    const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch']);
+    const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch', 'name']);
     if (argsFromCli.verbose) {
       logger.level = 'debug';
       process.env.DEBUG = 'electron-builder';
@@ -34,8 +33,10 @@ export default async function execute(): Promise<void> {
     const includeGenericFormats = (argsFromCli.format || osOfChoice === 'generic') ? false : await ask.forGenericFormats();
     const formatOfChoice = argsFromCli.format || await ask.forFormat(osOfChoice, includeGenericFormats);
     const architectureOfChoice = argsFromCli.arch || await ask.forArch();
+    const nameOfChoice = argsFromCli.name || '';
 
     const choices: Electronify.Choices = {
+      appName: nameOfChoice,
       url: urlOfChoice,
       os: osOfChoice,
       format: formatOfChoice,

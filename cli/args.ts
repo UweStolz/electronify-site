@@ -43,6 +43,11 @@ export async function initialize(args: string[]): Promise<void> {
       choices: Object.values(architecture),
       desciption: 'The architecture of your system.',
     })
+    .option('name', {
+      alias: 'n',
+      type: 'string',
+      desciption: 'The name which should be used.',
+    })
     .option('verbose', {
       alias: 'v',
       type: 'boolean',

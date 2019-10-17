@@ -12,6 +12,7 @@ declare global {
         interface Choices {
             [key: string]: string | number| Answers;
             url: string | Answers;
+            appName: string;
             os: string | Answers;
             format: string | Answers;
             architecture: string | number | Answers;
@@ -24,6 +25,7 @@ declare global {
             format?: string;
             arch?: string;
             verbose?: string;
+            name?: string;
         }
     }
 }
