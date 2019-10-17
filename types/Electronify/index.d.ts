@@ -2,6 +2,13 @@ import { Answers } from 'inquirer';
 
 declare global {
     namespace Electronify {
+        interface FormatsForOs {
+            [key: string]: string[];
+            generic: string[];
+            macos: string[];
+            linux: string[];
+            windows: string[];
+        }
         interface Choices {
             [key: string]: string | number| Answers;
             url: string | Answers;

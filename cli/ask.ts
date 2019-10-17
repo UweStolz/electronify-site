@@ -4,10 +4,8 @@ import { formatsForOs, architecture } from '../util/values';
 function getFormatsForOs(os: string, includeGenericFormats?: inquirer.Answers|boolean): string[] {
   let formats: string[] = [];
   if (includeGenericFormats) {
-    // @ts-ignore
     formats = formats.concat(formatsForOs[os], formatsForOs.generic);
   } else {
-    // @ts-ignore
     formats = formatsForOs[os];
   }
   return formats;
