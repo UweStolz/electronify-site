@@ -15,6 +15,7 @@ declare global {
             appName: string;
             os: string | Answers;
             format: string | Answers;
+            iconPath: string | Answers;
             architecture: string | number | Answers;
         }
 
@@ -26,6 +27,7 @@ declare global {
             arch?: string;
             verbose?: string;
             name?: string;
+            iconPath?: string;
         }
     }
 }

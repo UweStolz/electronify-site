@@ -22,7 +22,7 @@ export default async function execute(): Promise<void> {
     await initialize(process.argv);
     await logGreeting();
 
-    const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch', 'name']);
+    const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch', 'name', 'icon']);
     if (argsFromCli.verbose) {
       logger.level = 'debug';
       process.env.DEBUG = 'electron-builder';
@@ -34,6 +34,8 @@ export default async function execute(): Promise<void> {
     const formatOfChoice = argsFromCli.format || await ask.forFormat(osOfChoice, includeGenericFormats);
     const architectureOfChoice = argsFromCli.arch || await ask.forArch();
     const nameOfChoice = argsFromCli.name || '';
+    const includeCustomIcon = !argsFromCli.icon ? await ask.forCustomIcon() : false;
+    const iconOfChoice = includeCustomIcon ? await ask.forIcon() : argsFromCli.icon as string;
 
     const choices: Electronify.Choices = {
       appName: nameOfChoice,
@@ -41,6 +43,7 @@ export default async function execute(): Promise<void> {
       os: osOfChoice,
       format: formatOfChoice,
       architecture: architectureOfChoice,
+      iconPath: iconOfChoice,
     };
     await writeJSON('./app/config.json', { url: choices.url });
     logger.info('Starting to build artifact');

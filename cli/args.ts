@@ -41,17 +41,22 @@ export async function initialize(args: string[]): Promise<void> {
       alias: 'a',
       type: 'string',
       choices: Object.values(architecture),
-      desciption: 'The architecture of your system.',
+      description: 'The architecture of your system.',
     })
     .option('name', {
       alias: 'n',
       type: 'string',
-      desciption: 'The name which should be used.',
+      description: 'The name which should be used.',
+    })
+    .option('icon', {
+      alias: 'i',
+      type: 'string',
+      description: 'The path to your icon you wish to use.',
     })
     .option('verbose', {
       alias: 'v',
       type: 'boolean',
-      desciption: 'Activate DEBUG logging messages.',
+      description: 'Activate DEBUG logging messages.',
     })
     .check((argument) => {
       if (argument.url) {

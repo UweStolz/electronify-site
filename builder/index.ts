@@ -16,6 +16,7 @@ function getBaseName(url: string): string {
 async function preprocessData(choices: Electronify.Choices): Promise<Electronify.Choices> {
   const OS: string = choices.os.toUpperCase();
   const nameFromUrl: string = getBaseName(choices.url as string);
+  const pathToIcon: string = choices.iconPath as string;
   const archMap = {
     ia32: 0,
     x64: 1,
@@ -30,6 +31,7 @@ async function preprocessData(choices: Electronify.Choices): Promise<Electronify
     os: OS,
     format: choices.format,
     architecture: arch,
+    iconPath: pathToIcon,
   };
   return data;
 }
@@ -44,6 +46,7 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
       config: {
         directories: {
           app: `${path}/app`,
+          buildResources: data.iconPath as string || null,
         },
         productName: data.appName || data.url as string,
         appId: `com.electron.${data.url}`,
