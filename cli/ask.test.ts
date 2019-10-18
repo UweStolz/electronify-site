@@ -21,9 +21,23 @@ test('ask.forOs', async () => {
   expect(os).toBe('linux');
 });
 
-test('ask.forFormat', async () => {
+test('ask.forGenericFormats', async () => {
+  const prompt = jest.spyOn(inquirer, 'prompt').mockImplementationOnce((): any => ({ answer: true }));
+  const includeGenericFormats = await ask.forGenericFormats();
+  expect(prompt).toHaveBeenCalled();
+  expect(includeGenericFormats).toBe(true);
+});
+
+test('ask.forFormat-exclude', async () => {
   const prompt = jest.spyOn(inquirer, 'prompt').mockImplementationOnce((): any => ({ answer: 'appimage' }));
   const format = await ask.forFormat('linux', false);
+  expect(prompt).toHaveBeenCalled();
+  expect(format).toBe('appimage');
+});
+
+test('ask.forFormat-include', async () => {
+  const prompt = jest.spyOn(inquirer, 'prompt').mockImplementationOnce((): any => ({ answer: 'appimage' }));
+  const format = await ask.forFormat('linux', true);
   expect(prompt).toHaveBeenCalled();
   expect(format).toBe('appimage');
 });
