@@ -3,3 +3,4 @@ built
 yarn-error.log
 .vscode
 dist
+coverage
