@@ -46,4 +46,5 @@ The icon needs to be 512x512 and to be from type `.png`
 `yarn global add electronify`
 
 ## License
-UNLICENSED
+
+[MIT](LICENSE.md)
