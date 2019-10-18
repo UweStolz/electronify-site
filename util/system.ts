@@ -1,3 +1,3 @@
-export default function exitProcess(status: number): void {
-  process.exit(status);
+export default function exitProcess(code?: number | undefined): void {
+  process.exit(code);
 }
