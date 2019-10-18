@@ -91,6 +91,6 @@ export async function forIcon(): Promise<inquirer.Answers> {
     itemType: 'file',
     default: `${process.cwd()}`,
     excludePath: (nodePath: string) => nodePath.startsWith('node_modules'),
-    validate: (answer: string) => !!answer.endsWith('.png' || '.ico' || '.icns'),
+    validate: (answer: string) => !!answer.endsWith('.png' || '.icns'),
   });
 }
