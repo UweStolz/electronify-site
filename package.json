@@ -9,7 +9,6 @@
   "scripts": {
     "test": "yarn jest",
     "test:coverage": "yarn jest --coverage",
-    "codecoverage": "yarn codecov --token=cfcf4c6e-76cd-40d0-a557-33cffd3831f3",
     "install:prod": "yarn install --offline",
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
@@ -31,7 +30,6 @@
     "@types/yargs": "^13.0.3",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "codecov": "^3.6.1",
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0",
     "eslint": "^6.5.1",
