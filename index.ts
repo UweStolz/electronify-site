@@ -35,8 +35,8 @@ export default async function execute(): Promise<void> {
     const formatOfChoice = argsFromCli.format || await ask.forFormat(osOfChoice, includeGenericFormats);
     const architectureOfChoice = argsFromCli.arch || await ask.forArch();
     const nameOfChoice = argsFromCli.name || '';
-    const includeCustomIcon = !argsFromCli.icon ? await ask.forCustomIcon() : false;
-    const iconOfChoice = includeCustomIcon ? await ask.forIcon() : argsFromCli.icon as string;
+    const includeCustomIcon = !argsFromCli.iconPath ? await ask.forCustomIcon() : false;
+    const iconOfChoice = includeCustomIcon ? await ask.forIcon() : argsFromCli.iconPath as string;
 
     const choices: Electronify.Choices = {
       appName: nameOfChoice,
