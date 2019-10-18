@@ -7,3 +7,4 @@ dist
 offline-cache
 bin/*
 .vscode
+jest.config.js

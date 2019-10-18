@@ -1,5 +1,7 @@
 # electronify
 
+[![codecov](https://codecov.io/gh/UweStolz/electronify/branch/master/graph/badge.svg?token=WX5Gah4xXf)](https://codecov.io/gh/UweStolz/electronify)
+
 ## Overview
 ```sh
 yarn electronify

@@ -5,6 +5,7 @@ import {
   initialize, collectArgumentsFromCli,
 } from './cli/args';
 import buildArtifact from './builder';
+import exitProcess from './util/system';
 
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
@@ -54,6 +55,6 @@ export default async function execute(): Promise<void> {
   } catch (error) {
     logger.error('An error occurred:');
     logger.error(error);
-    process.exit(1);
+    exitProcess(1);
   }
 }
