@@ -24,6 +24,7 @@
   "private": true,
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
+    "@types/image-size": "^0.8.0",
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.19",
     "@types/node": "^12.7.12",
@@ -38,6 +39,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "fs-extra": "^8.1.0",
+    "image-size": "^0.8.3",
     "inquirer": "^7.0.0",
     "inquirer-fuzzy-path": "^2.1.0",
     "jest": "^24.9.0",

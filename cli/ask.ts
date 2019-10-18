@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 // @ts-ignore - There are no types available
 import inquiererFuzzyPath from 'inquirer-fuzzy-path';
+import { imageSize } from 'image-size';
 import { formatsForOs, architecture } from '../util/values';
 
 inquirer.registerPrompt('fuzzypath', inquiererFuzzyPath);
@@ -20,6 +21,12 @@ function formatChoice(os: string, includeGenericFormats: inquirer.Answers|boolea
   return formats;
 }
 
+function validateIcon(path: string): boolean {
+  if (!path.endsWith('.png' || '.icns')) return false;
+  const dimensions = imageSize(path);
+  if (dimensions.width !== 512 || dimensions.height !== 512) return false;
+  return true;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function ask(params: any): Promise<inquirer.Answers> {
@@ -91,6 +98,6 @@ export async function forIcon(): Promise<inquirer.Answers> {
     itemType: 'file',
     default: `${process.cwd()}`,
     excludePath: (nodePath: string) => nodePath.startsWith('node_modules'),
-    validate: (answer: string) => !!answer.endsWith('.png' || '.icns'),
+    validate: (answer: string) => validateIcon(answer),
   });
 }
