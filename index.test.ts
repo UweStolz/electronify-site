@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import execute from './index';
 import * as args from './cli/args';
 import * as exitProcess from './util/system';
