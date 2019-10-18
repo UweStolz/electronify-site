@@ -7,3 +7,11 @@ coverage:
   parsers:
     javascript:
       enable_partials: yes
+  ignore:
+    - "**/*.yml"
+    - "**/*.json"
+    - "**/*.md"
+    - "**/*.lock"
+    - ".eslint*"
+    - ".gitignore"
+    - "jest.config.js"
