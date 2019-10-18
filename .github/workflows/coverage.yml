@@ -4,9 +4,7 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x]
@@ -21,6 +19,10 @@ jobs:
       run: |
         yarn install
         yarn test:coverage
-        yarn codecoverage
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v1.0.3
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}
+        flags: unittests
       env:
         CI: true
