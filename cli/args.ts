@@ -16,6 +16,15 @@ export async function collectArgumentsFromCli(argumentsToCollect: string[]): Pro
   return argumentsFromCli;
 }
 
+function validateUrl(givenUrl: string): URL|false {
+  try {
+    const url = new URL(givenUrl);
+    return url;
+  } catch (err) {
+    return false;
+  }
+}
+
 export async function initialize(args: string[]): Promise<void> {
   // eslint-disable-next-line no-unused-expressions
   program = yargs
@@ -60,8 +69,10 @@ export async function initialize(args: string[]): Promise<void> {
     })
     .check((argument) => {
       if (argument.url) {
-        const url = new URL(argument.url);
-        return url;
+        if (validateUrl(argument.url)) {
+          return true;
+        }
+        throw new Error('Invalid URL!');
       }
       return true;
     })
