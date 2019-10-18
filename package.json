@@ -24,7 +24,6 @@
   "private": true,
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
-    "@types/image-size": "^0.8.0",
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.19",
     "@types/node": "^12.7.12",
