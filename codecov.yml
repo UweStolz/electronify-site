@@ -1,8 +1,9 @@
 codecov:
   branch: master
 coverage:
-  round: up
-  range: 0..10
+  range: 50...80
+  round: down
+  precision: 2
   parsers:
     javascript:
       enable_partials: yes
