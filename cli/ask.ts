@@ -48,8 +48,8 @@ export async function forURL(): Promise <inquirer.Answers> {
 
 export async function forOS(): Promise<inquirer.Answers> {
   return ask({
+    choices: ['linux', 'macos', 'windows'],
     message: 'What is your operating system?',
-    choices: ['macos', 'linux', 'windows'],
     type: 'list',
     validate: (answer: { length: number }) => answer.length > 0,
   });
@@ -66,8 +66,8 @@ export async function forGenericFormats(): Promise<inquirer.Answers> {
 export async function forFormat(os: inquirer.Answers|string, includeGenericFormats: inquirer.Answers|boolean): Promise<inquirer.Answers> {
   const osOfChoice = os as unknown as string;
   return ask({
-    message: 'What format do you whish?',
     choices: formatChoice(osOfChoice, includeGenericFormats),
+    message: 'What format do you whish?',
     type: 'list',
     validate: (answer: { length: number }) => answer.length > 0,
   });
@@ -75,8 +75,8 @@ export async function forFormat(os: inquirer.Answers|string, includeGenericForma
 
 export async function forArch(): Promise<inquirer.Answers> {
   return ask({
-    message: 'What architecture is the package for?',
     choices: Object.values(architecture),
+    message: 'What architecture is the package for?',
     type: 'list',
     validate: (answer: { length: number }) => answer.length > 0,
   });
@@ -92,11 +92,11 @@ export async function forCustomIcon(): Promise<inquirer.Answers> {
 
 export async function forIcon(): Promise<inquirer.Answers> {
   return ask({
-    type: 'fuzzypath',
-    name: 'path',
-    message: 'What is the path to the icon you whish to use?',
-    itemType: 'file',
     default: `${process.cwd()}`,
+    itemType: 'file',
+    message: 'What is the path to the icon you whish to use?',
+    name: 'path',
+    type: 'fuzzypath',
     excludePath: (nodePath: string) => nodePath.startsWith('node_modules'),
     validate: (answer: string) => validateIcon(answer),
   });

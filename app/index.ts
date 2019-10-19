@@ -6,13 +6,13 @@ let win: BrowserWindow | null = null;
 
 function createWindow(): void {
   win = new BrowserWindow({
-    width: 800,
     height: 600,
-    webPreferences: {
-      preload: join(app.getAppPath(), 'preload.js'),
-      nodeIntegration: true,
-    },
+    width: 800,
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : undefined,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: join(app.getAppPath(), 'preload.js'),
+    },
     // frame: process.platform === 'darwin',
   });
   win.loadURL(config.url);

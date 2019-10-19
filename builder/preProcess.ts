@@ -20,11 +20,11 @@ export default async function preprocessData(choices: Electronify.Choices): Prom
   const arch: number = archMap[choices.architecture];
   const data: Electronify.Choices = {
     appName: choices.appName,
-    url: nameFromUrl,
-    os: OS,
-    format: choices.format,
     architecture: arch,
+    format: choices.format,
     iconPath: pathToIcon,
+    os: OS,
+    url: nameFromUrl,
   };
   return data;
 }

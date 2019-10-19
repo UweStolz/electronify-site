@@ -11,15 +11,15 @@ beforeAll(() => {
 });
 
 test('Collects arguments', async () => {
-  const argsToCollect: string[] = ['verbose', 'url', 'os', 'format', 'arch', 'name', 'icon'];
+  const argsToCollect: string[] = ['arch', 'format', 'icon', 'name', 'os', 'url', 'verbose'];
   const returnedObject = {
-    verbose: undefined,
-    url: undefined,
-    os: undefined,
-    format: undefined,
     arch: undefined,
-    name: undefined,
+    format: undefined,
     icon: undefined,
+    name: undefined,
+    os: undefined,
+    url: undefined,
+    verbose: undefined,
   };
   await args.initialize(argsToCollect);
   const collectedArgs: Electronify.Args = await args.collectArgumentsFromCli(argsToCollect);
@@ -29,13 +29,13 @@ test('Collects arguments', async () => {
 test('Only collects given argument', async () => {
   const argsToCollect: string[] = ['icon'];
   const returnedObject = {
-    verbose: undefined,
-    url: undefined,
-    os: undefined,
-    format: undefined,
     arch: undefined,
-    name: undefined,
+    format: undefined,
     icon: undefined,
+    name: undefined,
+    os: undefined,
+    url: undefined,
+    verbose: undefined,
   };
   await args.initialize(argsToCollect);
   const collectedArgs: Electronify.Args = await args.collectArgumentsFromCli(argsToCollect);

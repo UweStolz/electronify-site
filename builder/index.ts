@@ -9,17 +9,17 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
   const data = await preprocessData(choices);
   try {
     await build({
-      // @ts-ignore
-      targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
       config: {
+        appId: `com.electron.${data.url}`,
+        artifactName: `electronify-${data.url}.${data.format}`,
         directories: {
           app: `${path}/app`,
           buildResources: data.iconPath as string || null,
         },
         productName: data.appName || data.url as string,
-        appId: `com.electron.${data.url}`,
-        artifactName: `electronify-${data.url}.${data.format}`,
       },
+      // @ts-ignore
+      targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
     });
   } catch (error) {
     logger.error('An error occurred while creating the artifact!');
