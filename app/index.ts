@@ -8,11 +8,11 @@ function createWindow(): void {
   win = new BrowserWindow({
     height: 600,
     width: 800,
-    webPreferences: {
-      preload: join(app.getAppPath(), 'preload.js'),
-      nodeIntegration: true,
-    },
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : undefined,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: join(app.getAppPath(), 'preload.js'),
+    },
     // frame: process.platform === 'darwin',
   });
   win.loadURL(config.url);

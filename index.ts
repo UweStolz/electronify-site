@@ -40,11 +40,11 @@ export default async function execute(): Promise<void> {
 
     const choices: Electronify.Choices = {
       appName: nameOfChoice,
-      url: urlOfChoice,
-      os: osOfChoice,
-      format: formatOfChoice,
       architecture: architectureOfChoice,
+      format: formatOfChoice,
       iconPath: iconOfChoice,
+      os: osOfChoice,
+      url: urlOfChoice,
     };
     await writeJSON('./app/config.json', { url: choices.url });
     logger.info('Starting to build artifact');

@@ -17,13 +17,13 @@ describe('execute()', (): void => {
     const mockedInitialize = jest.spyOn(args, 'initialize').mockImplementationOnce(async (): Promise<any> => {});
     const mockedCollectArgumentsFromCli = jest.spyOn(args, 'collectArgumentsFromCli').mockImplementationOnce(async () => {
       const mockedArguments: Electronify.Args = {
-        url: undefined,
-        os: undefined,
-        format: undefined,
         arch: undefined,
-        verbose: undefined,
-        name: undefined,
+        format: undefined,
         iconPath: undefined,
+        name: undefined,
+        os: undefined,
+        url: undefined,
+        verbose: undefined,
       };
       return mockedArguments;
     });
@@ -57,19 +57,20 @@ describe('execute()', (): void => {
     expect(mockedExitProcess).not.toHaveBeenCalled();
   });
   test('User does not get prompted if the argument was given via cli', async () => {
-    const mockedInitialize = jest.spyOn(args, 'initialize').mockImplementationOnce(async (): Promise<any> => { });
-    const mockedCollectArgumentsFromCli = jest.spyOn(args, 'collectArgumentsFromCli').mockImplementationOnce(async () => {
-      const mockedArguments: Electronify.Args = {
-        url: 'http://example.com',
-        os: 'linux',
-        format: 'snap',
-        arch: 'x64',
-        verbose: 'true',
-        name: 'SomeName',
-        iconPath: './some/path.png',
-      };
-      return mockedArguments;
-    });
+    const mockedInitialize = jest.spyOn(args, 'initialize').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedCollectArgumentsFromCli = jest.spyOn(args, 'collectArgumentsFromCli')
+      .mockImplementationOnce(async () => {
+        const mockedArguments: Electronify.Args = {
+          arch: 'x64',
+          format: 'snap',
+          iconPath: './some/path.png',
+          name: 'SomeName',
+          os: 'linux',
+          url: 'http://example.com',
+          verbose: 'true',
+        };
+        return mockedArguments;
+      });
 
     const mockedAskForUrl = jest.spyOn(ask, 'forURL').mockImplementationOnce(async (): Promise<any> => {});
     const mockedAskForOs = jest.spyOn(ask, 'forOS').mockImplementationOnce(async (): Promise<any> => {});
