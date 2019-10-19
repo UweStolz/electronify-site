@@ -1,14 +1,17 @@
 # electronify
 
 [![codecov](https://codecov.io/gh/UweStolz/electronify/branch/master/graph/badge.svg?token=WX5Gah4xXf)](https://codecov.io/gh/UweStolz/electronify)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9ddab2ab81594166acdc333b2e5f7437)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=UweStolz/electronify&utm_campaign=Badge_Grade)
 
 ## Overview
+
 ```sh
 yarn electronify
 ```
 
 ### Commands
-```
+
+```s
 Options:
   --version      Show version number                                   [boolean]
   --url, -u      Your URL you want to build an archive for.             [string]
@@ -25,12 +28,12 @@ Options:
 
 #### Formats
 
-| OS | Format |
-|----|--------|
+| OS            | Format                                                                |
+| ------------- | --------------------------------------------------------------------- |
 | Valid for all | `7z`, `zip`, `tar.xz`, `tar.7z`, `tar.lz`, `tar.gz`, `tar.bz2`, `dir` |
-| macos | `dmg`, `pkg`, `mas` |
-| linux | `appimage`, `snap`, `deb`, `rpm`, `freebsd`, `pacman`, `p5p`, `apk` |
-| windows | `nsis`, `nsis-web`, `portable`, `appx`, `msi`, `squirrel` |
+| macos         | `dmg`, `pkg`, `mas`                                                   |
+| linux         | `appimage`, `snap`, `deb`, `rpm`, `freebsd`, `pacman`, `p5p`, `apk`   |
+| windows       | `nsis`, `nsis-web`, `portable`, `appx`, `msi`, `squirrel`             |
 
 #### Architecture
 
