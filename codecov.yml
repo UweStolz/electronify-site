@@ -15,3 +15,4 @@ coverage:
     - ".eslint*"
     - ".gitignore"
     - "jest.config.js"
+    - "util/values.ts"
