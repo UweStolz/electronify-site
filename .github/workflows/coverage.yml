@@ -1,4 +1,4 @@
-name: Codecav & Codacy - CI
+name: build
 
 on:
   push:
@@ -34,5 +34,7 @@ jobs:
       with:
         token: ${{secrets.CODECOV_TOKEN}}
         flags: unittests
+    - name: Compile
+      run: yarn compile
       env:
         CI: true
