@@ -1,6 +1,7 @@
 import pino from 'pino';
 
 const logger = pino({
+  base: null,
   prettyPrint: {
     colorize: true,
     crlf: false,
@@ -8,7 +9,6 @@ const logger = pino({
     errorProps: '',
     translateTime: 'HH:MM:ss',
   },
-  base: null,
 });
 
 export default logger;

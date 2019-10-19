@@ -12,11 +12,11 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
       config: {
         appId: `com.electron.${data.url}`,
         artifactName: `electronify-${data.url}.${data.format}`,
-        productName: data.appName || data.url as string,
         directories: {
           app: `${path}/app`,
           buildResources: data.iconPath as string || null,
         },
+        productName: data.appName || data.url as string,
       },
       // @ts-ignore
       targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
