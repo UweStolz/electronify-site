@@ -31,41 +31,41 @@ export async function initialize(args: string[]): Promise<void> {
     .locale('en')
     .option('url', {
       alias: 'u',
-      type: 'string',
       description: 'Your URL you want to build an archive for.',
+      type: 'string',
     })
     .option('os', {
       alias: 'o',
-      type: 'string',
       choices: Object.keys(formatsForOs),
       description: 'Your operating system.',
+      type: 'string',
     })
     .option('format', {
       alias: 'f',
-      type: 'string',
       choices: Object.values(allValidFormats),
       description: 'Your desired target format.',
+      type: 'string',
     })
     .option('arch', {
       alias: 'a',
-      type: 'string',
       choices: Object.values(architecture),
       description: 'The architecture of your system.',
+      type: 'string',
     })
     .option('name', {
       alias: 'n',
-      type: 'string',
       description: 'The name which should be used.',
+      type: 'string',
     })
     .option('icon', {
       alias: 'i',
-      type: 'string',
       description: 'The path to your icon you wish to use.',
+      type: 'string',
     })
     .option('verbose', {
       alias: 'v',
-      type: 'boolean',
       description: 'Activate DEBUG logging messages.',
+      type: 'boolean',
     })
     .check((argument) => {
       if (argument.url) {

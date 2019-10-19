@@ -33,7 +33,7 @@
         "bin/*.js",
         "app/config.json",
         "app/package.json",
-        "package.json",
+        "package.json"
     ],
     "exclude": [
         "**/*.test.ts",

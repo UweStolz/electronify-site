@@ -6,8 +6,8 @@ let win: BrowserWindow | null = null;
 
 function createWindow(): void {
   win = new BrowserWindow({
-    width: 800,
     height: 600,
+    width: 800,
     webPreferences: {
       preload: join(app.getAppPath(), 'preload.js'),
       nodeIntegration: true,
