@@ -43,7 +43,7 @@ Supported: x64, ia32, armv7l, arm64
 
 #### Icons
 
-The icon needs to be 512x512 and to be from type `.png`
+The icon needs to be 512x512 and to be of type `.png`
 
 ## Installation
 
