@@ -25,6 +25,12 @@ function validateUrl(givenUrl: string): boolean {
   }
 }
 
+function validateOsAndFormat(OS: string, format: string): boolean {
+  const validFormatForOs = formatsForOs[OS].find((element) => element === format);
+  const validFormatForGeneric = formatsForOs.generic.find((element) => element === format);
+  return !!((validFormatForOs || validFormatForGeneric));
+}
+
 export async function initialize(args: string[]): Promise<void> {
   // eslint-disable-next-line no-unused-expressions
   program = yargs
@@ -73,6 +79,16 @@ export async function initialize(args: string[]): Promise<void> {
           return true;
         }
         throw new Error(`Invalid URL! ${argument.url}`);
+      } else if (argument.os && argument.format) {
+        if (validateOsAndFormat(argument.os, argument.format)) {
+          return true;
+        }
+        throw new Error(
+          `OS and format do not match!
+Valid formats for "${argument.os}" are:
+${formatsForOs[argument.os]}
+${formatsForOs.generic}`,
+        );
       }
       return true;
     })

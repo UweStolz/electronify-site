@@ -85,3 +85,21 @@ test('Exits the process, if the given protocol is Invalid', async () => {
   expect(mockProcessExit).toHaveBeenCalledWith(1);
   expect(console.error).toHaveBeenCalledWith(expect.stringContaining('Invalid URL!'));
 });
+
+test('Exits the process, if the given format does not fit the OS', async () => {
+  console.error = jest.fn();
+  // @ts-ignore
+  const mockProcessExit = jest.spyOn(process, 'exit').mockImplementationOnce((number) => number);
+  const argsToCollect = [
+    '/usr/local/bin/node',
+    '/home/ustolz/repositories/PRIV/electronify/built/bin/electronify.js',
+    '--os',
+    'linux',
+    '--format',
+    'nsis'];
+
+  await args.initialize(argsToCollect);
+
+  expect(mockProcessExit).toHaveBeenCalledWith(1);
+  expect(console.error).toHaveBeenCalledWith(expect.stringContaining('OS and format do not match!'));
+});
