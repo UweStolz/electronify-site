@@ -16,10 +16,10 @@ export async function collectArgumentsFromCli(argumentsToCollect: string[]): Pro
   return argumentsFromCli;
 }
 
-function validateUrl(givenUrl: string): URL|false {
+function validateUrl(givenUrl: string): boolean {
   try {
     const url = new URL(givenUrl);
-    return url;
+    return !!(url.protocol === 'https:' || url.protocol === 'http:');
   } catch (err) {
     return false;
   }
@@ -72,7 +72,7 @@ export async function initialize(args: string[]): Promise<void> {
         if (validateUrl(argument.url)) {
           return true;
         }
-        throw new Error('Invalid URL!');
+        throw new Error(`Invalid URL! ${argument.url}`);
       }
       return true;
     })
