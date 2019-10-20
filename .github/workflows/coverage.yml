@@ -35,6 +35,8 @@ jobs:
         token: ${{secrets.CODECOV_TOKEN}}
         flags: unittests
     - name: Compile
-      run: yarn compile
+      run: yarn run tsc -p ./tsconfig.build.json
+    - name: Lint
+      run: yarn lint
       env:
         CI: true

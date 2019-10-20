@@ -7,6 +7,7 @@
     "electronify": "./built/bin/electronify.js"
   },
   "scripts": {
+    "lint": "yarn run eslint --ext .ts --ext .js .",
     "test": "yarn jest",
     "test:coverage": "yarn jest --coverage",
     "install:prod": "yarn install --offline",
