@@ -8,28 +8,28 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
       label: 'Edit',
       submenu: [
         {
-          label: 'Undo',
           accelerator: 'CmdOrCtrl+Z',
+          label: 'Undo',
           role: 'undo',
         },
         {
-          label: 'Cut',
           accelerator: 'CmdOrCtrl+X',
+          label: 'Cut',
           role: 'cut',
         },
         {
-          label: 'Copy',
           accelerator: 'CmdOrCtrl+C',
+          label: 'Copy',
           role: 'copy',
         },
         {
-          label: 'Paste',
           accelerator: 'CmdOrCtrl+V',
+          label: 'Paste',
           role: 'paste',
         },
         {
-          label: 'Select All',
           accelerator: 'CmdOrCtrl+A',
+          label: 'Select All',
           role: 'selectAll',
         },
       ],
@@ -39,13 +39,13 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
       role: 'window',
       submenu: [
         {
-          label: 'Minimize',
           accelerator: 'CmdOrCtrl+M',
+          label: 'Minimize',
           role: 'minimize',
         },
         {
-          label: 'Close',
           accelerator: 'CmdOrCtrl+W',
+          label: 'Close',
           role: 'close',
         },
       ],
