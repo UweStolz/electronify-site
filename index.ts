@@ -6,6 +6,7 @@ import {
 } from './cli/args';
 import buildArtifact from './builder';
 import exitProcess from './util/system';
+import { formatsForOs } from './util/values';
 
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
@@ -18,7 +19,22 @@ function logFarewell(choices: Electronify.Choices): void {
   logger.info('Have fun!');
 }
 
+function matchingOsForFormat(givenFormat: string): undefined | string {
+  let indexOf = -1;
+  const osFormats = Object.values(formatsForOs);
+  const osNames = Object.getOwnPropertyNames(formatsForOs);
+
+  osFormats.forEach((formatForOs, index) => {
+    formatForOs.forEach((formatInList) => {
+      if (formatInList === givenFormat) { indexOf = index; }
+    });
+  });
+
+  return (indexOf === 0) ? undefined : osNames[indexOf];
+}
+
 export default async function execute(): Promise<void> {
+  let osForGivenFormat;
   try {
     await initialize(process.argv);
     await logGreeting();
@@ -28,9 +44,12 @@ export default async function execute(): Promise<void> {
       logger.level = 'debug';
       process.env.DEBUG = 'electron-builder';
     }
+    if (argsFromCli.format) {
+      osForGivenFormat = matchingOsForFormat(argsFromCli.format);
+    }
 
     const urlOfChoice = argsFromCli.url || await ask.forURL();
-    const osOfChoice = argsFromCli.os || await ask.forOS();
+    const osOfChoice = osForGivenFormat || argsFromCli.os || await ask.forOS();
     const includeGenericFormats = (argsFromCli.format || osOfChoice === 'generic') ? false : await ask.forGenericFormats();
     const formatOfChoice = argsFromCli.format || await ask.forFormat(osOfChoice, includeGenericFormats);
     const architectureOfChoice = argsFromCli.arch || await ask.forArch();

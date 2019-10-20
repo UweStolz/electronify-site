@@ -54,6 +54,24 @@ test('Validates the given URL', async () => {
   expect(mockProcessExit).not.toHaveBeenCalledWith(1);
 });
 
+test('Successfully validates the matching OS and format', async () => {
+  console.error = jest.fn();
+  // @ts-ignore
+  const mockProcessExit = jest.spyOn(process, 'exit').mockImplementationOnce((number) => number);
+  const argsToCollect = [
+    '/usr/local/bin/node',
+    '/home/ustolz/repositories/PRIV/electronify/built/bin/electronify.js',
+    '--os',
+    'linux',
+    '--format',
+    'snap'];
+
+  await args.initialize(argsToCollect);
+
+  expect(mockProcessExit).not.toHaveBeenCalledWith(1);
+  expect(console.error).not.toHaveBeenCalled();
+});
+
 test('Exits the process, if the given URL is Invalid', async () => {
   console.error = jest.fn();
   // @ts-ignore
@@ -67,5 +85,39 @@ test('Exits the process, if the given URL is Invalid', async () => {
   await args.initialize(argsToCollect);
 
   expect(mockProcessExit).toHaveBeenCalledWith(1);
-  expect(console.error).toHaveBeenCalledWith('Invalid URL!');
+  expect(console.error).toHaveBeenCalledWith(expect.stringContaining('Invalid URL!'));
+});
+
+test('Exits the process, if the given protocol is Invalid', async () => {
+  console.error = jest.fn();
+  // @ts-ignore
+  const mockProcessExit = jest.spyOn(process, 'exit').mockImplementationOnce((number) => number);
+  const argsToCollect = [
+    '/usr/local/bin/node',
+    '/home/ustolz/repositories/PRIV/electronify/built/bin/electronify.js',
+    '--url',
+    'asdf://www.example.com'];
+
+  await args.initialize(argsToCollect);
+
+  expect(mockProcessExit).toHaveBeenCalledWith(1);
+  expect(console.error).toHaveBeenCalledWith(expect.stringContaining('Invalid URL!'));
+});
+
+test('Exits the process, if the given format does not fit the OS', async () => {
+  console.error = jest.fn();
+  // @ts-ignore
+  const mockProcessExit = jest.spyOn(process, 'exit').mockImplementationOnce((number) => number);
+  const argsToCollect = [
+    '/usr/local/bin/node',
+    '/home/ustolz/repositories/PRIV/electronify/built/bin/electronify.js',
+    '--os',
+    'linux',
+    '--format',
+    'nsis'];
+
+  await args.initialize(argsToCollect);
+
+  expect(mockProcessExit).toHaveBeenCalledWith(1);
+  expect(console.error).toHaveBeenCalledWith(expect.stringContaining('OS and format do not match!'));
 });

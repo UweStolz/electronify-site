@@ -100,6 +100,82 @@ describe('execute()', (): void => {
     expect(mockedBuildArtifact).toHaveBeenCalled();
     expect(mockedExitProcess).not.toHaveBeenCalled();
   });
+  test('User does not get prompted for OS, if the format is not generic', async () => {
+    const mockedInitialize = jest.spyOn(args, 'initialize').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedCollectArgumentsFromCli = jest.spyOn(args, 'collectArgumentsFromCli')
+      .mockImplementationOnce(async () => {
+        const mockedArguments: Electronify.Args = {
+          format: 'snap',
+        };
+        return mockedArguments;
+      });
+
+    const mockedAskForUrl = jest.spyOn(ask, 'forURL').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedAskForOs = jest.spyOn(ask, 'forOS').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedAskForGenericFormats = jest.spyOn(ask, 'forGenericFormats').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedAskForFormat = jest.spyOn(ask, 'forFormat').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedAskForArch = jest.spyOn(ask, 'forArch').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedAskForCustomIcon = jest.spyOn(ask, 'forCustomIcon').mockImplementationOnce(async (): Promise<any> => {});
+    const mockedAskForIcon = jest.spyOn(ask, 'forIcon').mockImplementationOnce(async (): Promise<any> => {});
+
+    const mockedWriteJSON = jest.spyOn(fsExtra, 'writeJSON').mockImplementationOnce(async (): Promise<void> => {});
+    const mockedBuildArtifact = jest.spyOn(builder, 'default').mockImplementationOnce(async (): Promise<void> => {});
+
+    const mockedExitProcess = jest.spyOn(exitProcess, 'default').mockImplementationOnce((): void => {});
+    await execute();
+    expect(mockedInitialize).toHaveBeenCalled();
+    expect(mockedCollectArgumentsFromCli).toHaveBeenCalled();
+
+    expect(mockedAskForUrl).toHaveBeenCalled();
+    expect(mockedAskForOs).not.toHaveBeenCalled();
+    expect(mockedAskForGenericFormats).not.toHaveBeenCalled();
+    expect(mockedAskForFormat).not.toHaveBeenCalled();
+    expect(mockedAskForArch).toHaveBeenCalled();
+    expect(mockedAskForCustomIcon).toHaveBeenCalled();
+    expect(mockedAskForIcon).not.toHaveBeenCalled();
+
+    expect(mockedWriteJSON).toHaveBeenCalled();
+    expect(mockedBuildArtifact).toHaveBeenCalled();
+    expect(mockedExitProcess).not.toHaveBeenCalled();
+  });
+  test('User get prompted for OS, if the format is generic', async () => {
+    const mockedInitialize = jest.spyOn(args, 'initialize').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedCollectArgumentsFromCli = jest.spyOn(args, 'collectArgumentsFromCli')
+      .mockImplementationOnce(async () => {
+        const mockedArguments: Electronify.Args = {
+          format: 'zip',
+        };
+        return mockedArguments;
+      });
+
+    const mockedAskForUrl = jest.spyOn(ask, 'forURL').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedAskForOs = jest.spyOn(ask, 'forOS').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedAskForGenericFormats = jest.spyOn(ask, 'forGenericFormats').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedAskForFormat = jest.spyOn(ask, 'forFormat').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedAskForArch = jest.spyOn(ask, 'forArch').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedAskForCustomIcon = jest.spyOn(ask, 'forCustomIcon').mockImplementationOnce(async (): Promise<any> => { });
+    const mockedAskForIcon = jest.spyOn(ask, 'forIcon').mockImplementationOnce(async (): Promise<any> => { });
+
+    const mockedWriteJSON = jest.spyOn(fsExtra, 'writeJSON').mockImplementationOnce(async (): Promise<void> => { });
+    const mockedBuildArtifact = jest.spyOn(builder, 'default').mockImplementationOnce(async (): Promise<void> => { });
+
+    const mockedExitProcess = jest.spyOn(exitProcess, 'default').mockImplementationOnce((): void => { });
+    await execute();
+    expect(mockedInitialize).toHaveBeenCalled();
+    expect(mockedCollectArgumentsFromCli).toHaveBeenCalled();
+
+    expect(mockedAskForUrl).toHaveBeenCalled();
+    expect(mockedAskForOs).toHaveBeenCalled();
+    expect(mockedAskForGenericFormats).not.toHaveBeenCalled();
+    expect(mockedAskForFormat).not.toHaveBeenCalled();
+    expect(mockedAskForArch).toHaveBeenCalled();
+    expect(mockedAskForCustomIcon).toHaveBeenCalled();
+    expect(mockedAskForIcon).not.toHaveBeenCalled();
+
+    expect(mockedWriteJSON).toHaveBeenCalled();
+    expect(mockedBuildArtifact).toHaveBeenCalled();
+    expect(mockedExitProcess).not.toHaveBeenCalled();
+  });
   test('An error gets catched successfully, if one occurs', async () => {
     const mockedInitialize = jest.spyOn(args, 'initialize').mockImplementationOnce(async (): Promise<any> => {});
     const mockedCollectArgumentsFromCli = jest.spyOn(args, 'collectArgumentsFromCli').mockImplementationOnce(async (): Promise<any> => {});

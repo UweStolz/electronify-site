@@ -1,3 +1,4 @@
+node_modules
 **/*.*rc
 **/*.config*
 junit.xml
@@ -6,5 +7,7 @@ built
 dist
 offline-cache
 bin/*
+coverage
+.github
 .vscode
 jest.config.js

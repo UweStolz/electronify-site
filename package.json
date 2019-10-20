@@ -7,6 +7,7 @@
     "electronify": "./built/bin/electronify.js"
   },
   "scripts": {
+    "lint": "yarn run eslint --ext .ts --ext .js .",
     "test": "yarn jest",
     "test:coverage": "yarn jest --coverage",
     "install:prod": "yarn install --offline",
@@ -15,7 +16,7 @@
     "start:dev": "ts-node ./bin/electronify.js",
     "copy-lock-files": "yarn run ncp ./yarn.lock ./built/yarn.lock && yarn run ncp ./app/yarn.lock ./built/app/yarn.lock",
     "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json && yarn copy-lock-files",
-    "compile:watch": "yarn run rimraf ./built && yarn run tsc -w -p ./tsconfig.build.json"
+    "compile:watch": "yarn run rimraf ./built && yarn run tsc -w -p ./tsconfig.build.json && yarn copy-lock-files"
   },
   "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz <example@mail.com>",

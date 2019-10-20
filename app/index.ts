@@ -1,9 +1,9 @@
 import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
 import config from './config.json';
+import buildMenu from './components/menu';
 
 let win: BrowserWindow | null = null;
-
 function createWindow(): void {
   win = new BrowserWindow({
     height: 600,
@@ -13,9 +13,10 @@ function createWindow(): void {
       nodeIntegration: true,
       preload: join(app.getAppPath(), 'preload.js'),
     },
-    // frame: process.platform === 'darwin',
   });
   win.loadURL(config.url);
+
+  buildMenu();
 
   win.on('closed', (): void => {
     win = null;
