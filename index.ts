@@ -1,4 +1,5 @@
 import { writeJSON } from 'fs-extra';
+import ora from 'ora';
 import logger from './cli/logger';
 import * as ask from './cli/ask';
 import {
@@ -15,7 +16,7 @@ function logGreeting(): void {
 }
 
 function logFarewell(choices: Electronify.Choices): void {
-  logger.info(choices, 'Your settings are:');
+  logger.debug(choices, 'Your settings are:');
   logger.info('Have fun!');
 }
 
@@ -31,6 +32,14 @@ function matchingOsForFormat(givenFormat: string): undefined | string {
   });
 
   return (indexOf === 0) ? undefined : osNames[indexOf];
+}
+
+async function build(choices: Electronify.Choices): Promise<void> {
+  const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+  // @ts-ignore
+  process.stdout.write = (): void => {};
+  await buildArtifact(choices);
+  process.stdout.write = originalStdoutWrite;
 }
 
 export default async function execute(): Promise<void> {
@@ -66,10 +75,15 @@ export default async function execute(): Promise<void> {
       url: urlOfChoice,
     };
     await writeJSON('./app/config.json', { url: choices.url });
-    logger.info('Starting to build artifact');
-    await buildArtifact(choices);
-    logger.info('Finished building artifact');
 
+    const spinnerInstance = ora.promise(build(choices), {
+      text: 'Generating package..',
+      discardStdin: false,
+    });
+    spinnerInstance.clear();
+
+    // FIXME
+    logger.info('Finished building artifact');
     logFarewell(choices);
   } catch (error) {
     logger.error('An error occurred:');
