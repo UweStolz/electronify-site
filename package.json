@@ -16,7 +16,7 @@
     "start:dev": "ts-node ./bin/electronify.js",
     "copy-lock-files": "yarn run ncp ./yarn.lock ./built/yarn.lock && yarn run ncp ./app/yarn.lock ./built/app/yarn.lock",
     "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json && yarn copy-lock-files",
-    "compile:watch": "yarn run rimraf ./built && yarn run tsc -w -p ./tsconfig.build.json && yarn copy-lock-files"
+    "compile:watch": "yarn run rimraf ./built && yarn run tsc -w -p ./tsconfig.build.json"
   },
   "repository": "https://github.com/UweStolz/electronify",
   "author": "Uwe Stolz <example@mail.com>",
@@ -42,6 +42,7 @@
     "inquirer-fuzzy-path": "^2.1.0",
     "jest": "^24.9.0",
     "ncp": "^2.0.0",
+    "ora": "^4.0.2",
     "pino": "^5.13.4",
     "pino-pretty": "^3.2.2",
     "rimraf": "^3.0.0",
