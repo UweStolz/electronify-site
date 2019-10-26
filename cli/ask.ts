@@ -84,7 +84,7 @@ export async function forArch(): Promise<inquirer.Answers> {
 
 export async function forCustomIcon(): Promise<inquirer.Answers> {
   return ask({
-    message: 'Do you want to use an custom icon?',
+    message: 'Do you want to use a custom icon?',
     type: 'confirm',
     validate: (answer: { length: number }) => answer.length > 0,
   });
