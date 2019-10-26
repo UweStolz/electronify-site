@@ -37,8 +37,8 @@ function matchingOsForFormat(givenFormat: string): undefined | string {
 
 async function build(choices: Electronify.Choices): Promise<void> {
   const spinnerInstance = getSpinner({
-    text: 'Generating package..',
     discardStdin: false,
+    text: 'Generating package..',
   });
   let state = false;
   const originalStdoutWrite = process.stdout.write.bind(process.stdout);
