@@ -1,6 +1,5 @@
 import { build, Platform } from 'electron-builder';
 import { resolve } from 'path';
-import logger from '../cli/logger';
 import preprocessData from './preProcess';
 
 const path = resolve();
@@ -14,7 +13,7 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
         artifactName: `electronify-${data.url}.${data.format}`,
         directories: {
           app: `${path}/app`,
-          buildResources: data.iconPath as string || null,
+          buildResources: data.iconPath as string || undefined,
         },
         productName: data.appName || data.url as string,
       },
@@ -22,7 +21,6 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
       targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
     });
   } catch (error) {
-    logger.error('An error occurred while creating the artifact!');
-    logger.error(error);
+    throw Error();
   }
 }
