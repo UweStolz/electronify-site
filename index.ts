@@ -1,5 +1,4 @@
 import { writeJSON } from 'fs-extra';
-import ora from 'ora';
 import logger from './cli/logger';
 import * as ask from './cli/ask';
 import {
@@ -8,6 +7,9 @@ import {
 import buildArtifact from './builder';
 import exitProcess from './util/system';
 import { formatsForOs } from './util/values';
+import { getSpinner, setSpinnerState } from './util/spinner';
+
+let shouldLogFarewell = false;
 
 function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
@@ -15,8 +17,7 @@ function logGreeting(): void {
   logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
 }
 
-function logFarewell(choices: Electronify.Choices): void {
-  logger.debug(choices, 'Your settings are:');
+function logFarewell(): void {
   logger.info('Have fun!');
 }
 
@@ -35,18 +36,35 @@ function matchingOsForFormat(givenFormat: string): undefined | string {
 }
 
 async function build(choices: Electronify.Choices): Promise<void> {
+  const spinnerInstance = getSpinner({
+    text: 'Generating package..',
+    discardStdin: false,
+  });
+  let state = false;
   const originalStdoutWrite = process.stdout.write.bind(process.stdout);
   // @ts-ignore
   process.stdout.write = (): void => {};
-  await buildArtifact(choices);
-  process.stdout.write = originalStdoutWrite;
+  try {
+    spinnerInstance.start();
+    await buildArtifact(choices);
+    spinnerInstance.text = 'Successfully finished building the artifact';
+    logger.debug(choices, 'Your settings are:');
+    state = true;
+    shouldLogFarewell = true;
+  } catch (err) {
+    spinnerInstance.text = 'An error occurred while building the artifact!';
+  } finally {
+    process.stdout.write = originalStdoutWrite;
+    setSpinnerState(spinnerInstance, state);
+  }
 }
+
 
 export default async function execute(): Promise<void> {
   let osForGivenFormat;
   try {
     await initialize(process.argv);
-    await logGreeting();
+    logGreeting();
 
     const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch', 'name', 'icon']);
     if (argsFromCli.verbose) {
@@ -75,19 +93,12 @@ export default async function execute(): Promise<void> {
       url: urlOfChoice,
     };
     await writeJSON('./app/config.json', { url: choices.url });
-
-    const spinnerInstance = ora.promise(build(choices), {
-      text: 'Generating package..',
-      discardStdin: false,
-    });
-    spinnerInstance.clear();
-
-    // FIXME
-    logger.info('Finished building artifact');
-    logFarewell(choices);
+    await build(choices);
   } catch (error) {
-    logger.error('An error occurred:');
+    logger.error('An unexpected error occurred!');
     logger.error(error);
     exitProcess(1);
+  } finally {
+    if (shouldLogFarewell) { logFarewell(); }
   }
 }
