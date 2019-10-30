@@ -12,6 +12,8 @@
         "electron": "^6.0.12"
     },
     "dependencies": {
-        "tslib": "^1.10.0"
+        "electron-prompt": "^1.4.0",
+        "tslib": "^1.10.0",
+        "user-agents": "^1.0.423"
     }
 }

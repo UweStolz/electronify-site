@@ -1,9 +1,54 @@
 import {
   Menu, MenuItemConstructorOptions, MenuItem,
 } from 'electron';
+import setUserAgent from './userAgent';
+import createPrompt from './prompt';
+
+let browserWindow: Electron.BrowserWindow;
 
 function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
   const template: (MenuItemConstructorOptions | MenuItem)[] = [
+    {
+      label: 'Tools',
+      submenu: [
+        {
+          label: 'Clear cookies',
+          click: (): void => {},
+        },
+        {
+          label: 'Clear cache',
+          click: (): void => {},
+        },
+      ],
+    },
+    {
+      label: 'User-Agent',
+      submenu: [
+        {
+          label: 'Desktop',
+          type: 'normal',
+          click: (): void => { setUserAgent({ deviceCategory: 'desktop' }); },
+        },
+        {
+          label: 'Mobile',
+          type: 'normal',
+          sublabel: undefined,
+          click: (): void => { setUserAgent({ deviceCategory: 'mobile' }); },
+        },
+        {
+          label: 'Custom',
+          type: 'normal',
+
+          click: async (): Promise<void> => {
+            const customUserAgent = await createPrompt(undefined, browserWindow);
+            if (typeof customUserAgent === 'string') {
+              const regex = new RegExp(customUserAgent);
+              setUserAgent(regex);
+            }
+          },
+        },
+      ],
+    },
     {
       label: 'Edit',
       submenu: [
@@ -48,14 +93,18 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
           label: 'Close',
           role: 'close',
         },
+        {
+          label: 'Reload',
+          role: 'reload',
+        },
       ],
     },
   ];
   return template;
 }
 
-
-export default function buildeMenu(): void {
+export default function buildeMenu(currentWindow: Electron.BrowserWindow): void {
+  browserWindow = currentWindow;
   const template = buildMenuTemplate();
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);

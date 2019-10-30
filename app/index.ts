@@ -4,6 +4,7 @@ import config from './config.json';
 import buildMenu from './components/menu';
 
 let win: BrowserWindow | null = null;
+
 function createWindow(): void {
   win = new BrowserWindow({
     height: 600,
@@ -14,9 +15,9 @@ function createWindow(): void {
       preload: join(app.getAppPath(), 'preload.js'),
     },
   });
-  win.loadURL(config.url);
+  win.loadURL('https://www.whatsmyua.info/');
 
-  buildMenu();
+  buildMenu(win);
 
   win.on('closed', (): void => {
     win = null;
