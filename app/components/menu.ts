@@ -27,13 +27,12 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
         {
           label: 'Desktop',
           type: 'normal',
-          click: (): void => { setUserAgent({ deviceCategory: 'desktop' }); },
+          click: (): void => { setUserAgent({ deviceCategory: 'desktop' }, browserWindow); },
         },
         {
           label: 'Mobile',
           type: 'normal',
-          sublabel: undefined,
-          click: (): void => { setUserAgent({ deviceCategory: 'mobile' }); },
+          click: (): void => { setUserAgent({ deviceCategory: 'mobile' }, browserWindow); },
         },
         {
           label: 'Custom',
@@ -43,7 +42,7 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
             const customUserAgent = await createPrompt(undefined, browserWindow);
             if (typeof customUserAgent === 'string') {
               const regex = new RegExp(customUserAgent);
-              setUserAgent(regex);
+              setUserAgent(regex, browserWindow);
             }
           },
         },

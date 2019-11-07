@@ -1,8 +1,8 @@
 
-import { session } from 'electron';
+import { session, BrowserWindow } from 'electron';
 // @ts-ignore
 import UserAgent from 'user-agents';
-import { openErrorBox } from './dialog';
+import { openErrorBox, openMessageBox } from './dialog';
 
 interface UserAgentOptions {
   appName?: string;
@@ -20,11 +20,17 @@ interface UserAgentOptions {
   viewportWidth?: number;
 }
 
-export default function setUserAgent(userAgentOptions: UserAgentOptions|RegExp): void {
+export default async function setUserAgent(userAgentOptions: UserAgentOptions|RegExp, parentWindow: BrowserWindow): Promise<void> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let userAgent: any;
   try {
     userAgent = new UserAgent(userAgentOptions);
+    await openMessageBox(parentWindow, {
+      type: 'info',
+      title: 'User-Agent changed',
+      buttons: ['OK'],
+      message: 'The User-Agent was successfully set.',
+    });
   } catch (err) {
     openErrorBox('Invalid User-Agent', 'The given User-Agent was not valid!');
     return;
