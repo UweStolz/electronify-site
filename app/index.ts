@@ -15,7 +15,7 @@ function createWindow(): void {
       preload: join(app.getAppPath(), 'preload.js'),
     },
   });
-  win.loadURL('https://www.whatsmyua.info/');
+  win.loadURL(config.url);
 
   buildMenu(win);
 
