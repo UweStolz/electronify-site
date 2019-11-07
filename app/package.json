@@ -9,7 +9,8 @@
         "start": "electron ."
     },
     "devDependencies": {
-        "electron": "^6.0.12"
+        "electron": "^7.1.0",
+        "spectron": "^9.0.0"
     },
     "dependencies": {
         "electron-prompt": "^1.4.0",
