@@ -12,12 +12,12 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
       label: 'Tools',
       submenu: [
         {
-          label: 'Clear cookies',
           click: (): void => {},
+          label: 'Clear cookies',
         },
         {
-          label: 'Clear cache',
           click: (): void => {},
+          label: 'Clear cache',
         },
       ],
     },
@@ -25,19 +25,16 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
       label: 'User-Agent',
       submenu: [
         {
+          click: (): void => { setUserAgent({ deviceCategory: 'desktop' }, browserWindow); },
           label: 'Desktop',
           type: 'normal',
-          click: (): void => { setUserAgent({ deviceCategory: 'desktop' }, browserWindow); },
         },
         {
+          click: (): void => { setUserAgent({ deviceCategory: 'mobile' }, browserWindow); },
           label: 'Mobile',
           type: 'normal',
-          click: (): void => { setUserAgent({ deviceCategory: 'mobile' }, browserWindow); },
         },
         {
-          label: 'Custom',
-          type: 'normal',
-
           click: async (): Promise<void> => {
             const customUserAgent = await createPrompt(undefined, browserWindow);
             if (typeof customUserAgent === 'string') {
@@ -45,6 +42,9 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
               setUserAgent(regex, browserWindow);
             }
           },
+          label: 'Custom',
+          type: 'normal',
+
         },
       ],
     },

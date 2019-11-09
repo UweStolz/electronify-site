@@ -26,10 +26,10 @@ export default async function setUserAgent(userAgentOptions: UserAgentOptions|Re
   try {
     userAgent = new UserAgent(userAgentOptions);
     await openMessageBox(parentWindow, {
-      type: 'info',
-      title: 'User-Agent changed',
       buttons: ['OK'],
       message: 'The User-Agent was successfully set.',
+      title: 'User-Agent changed',
+      type: 'info',
     });
   } catch (err) {
     openErrorBox('Invalid User-Agent', 'The given User-Agent was not valid!');
