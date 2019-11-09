@@ -20,7 +20,8 @@ interface UserAgentOptions {
   viewportWidth?: number;
 }
 
-export default async function setUserAgent(userAgentOptions: UserAgentOptions|RegExp, parentWindow: BrowserWindow): Promise<void> {
+export default async function setUserAgent(userAgentOptions: UserAgentOptions|RegExp, parentWindow: BrowserWindow):
+Promise<void> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let userAgent: any;
   try {
