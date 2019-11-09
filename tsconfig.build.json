@@ -3,6 +3,7 @@
         "enable": true
     },
     "compilerOptions": {
+        "skipLibCheck": true,
         "target": "es5",
         "module": "commonjs",
         "strict": true,
