@@ -1,6 +1,7 @@
 import {
   Menu, MenuItemConstructorOptions, MenuItem,
 } from 'electron';
+import clear from './clear';
 import setUserAgent from './userAgent';
 import createPrompt from './prompt';
 
@@ -12,11 +13,11 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
       label: 'Tools',
       submenu: [
         {
-          click: (): void => {},
+          click: async (): Promise<void> => { await clear.cookies(); },
           label: 'Clear cookies',
         },
         {
-          click: (): void => {},
+          click: async (): Promise<void> => { await clear.cache(); },
           label: 'Clear cache',
         },
       ],
