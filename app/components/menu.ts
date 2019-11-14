@@ -13,11 +13,11 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
       label: 'Tools',
       submenu: [
         {
-          click: async (): Promise<void> => { await clear.cookies(); },
+          click: async (): Promise<void> => { await clear.cookies(browserWindow); },
           label: 'Clear cookies',
         },
         {
-          click: async (): Promise<void> => { await clear.cache(); },
+          click: async (): Promise<void> => { await clear.cache(browserWindow); },
           label: 'Clear cache',
         },
       ],
