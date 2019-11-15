@@ -2,9 +2,9 @@
   "name": "electronify",
   "description": "Electron wrapper for websites",
   "version": "0.1.0",
-  "main": "./built/bin/electronify.js",
+  "main": "./bin/electronify.js",
   "bin": {
-    "electronify": "./built/bin/electronify.js"
+    "electronify": "./bin/electronify.js"
   },
   "scripts": {
     "lint": "yarn run eslint --ext .ts --ext .js .",
@@ -22,34 +22,38 @@
   "author": "Uwe Stolz <example@mail.com>",
   "license": "UNLICENSED",
   "private": true,
+  "dependencies": {
+    "electron": "^7.1.0",
+    "electron-builder": "^22.1.0",
+    "image-size": "^0.8.3",
+    "inquirer": "^7.0.0",
+    "inquirer-fuzzy-path": "^2.1.0",
+    "pino": "^5.13.4",
+    "pino-pretty": "^3.2.2",
+    "tslib": "^1.10.0",
+    "yargs": "^14.2.0"
+  },
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.19",
+    "@types/lodash.capitalize": "4.2.3",
+    "@types/lodash.invoke": "4.5.3",
     "@types/node": "^12.7.12",
     "@types/pino": "^5.8.12",
     "@types/yargs": "^13.0.3",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "electron": "^6.0.12",
-    "electron-builder": "^21.2.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "fs-extra": "^8.1.0",
-    "image-size": "^0.8.3",
-    "inquirer": "^7.0.0",
-    "inquirer-fuzzy-path": "^2.1.0",
     "jest": "^24.9.0",
     "ncp": "^2.0.0",
     "ora": "^4.0.2",
-    "pino": "^5.13.4",
-    "pino-pretty": "^3.2.2",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
-    "tslib": "^1.10.0",
-    "typescript": "^3.6.4",
-    "yargs": "^14.2.0"
+    "typescript": "^3.6.4"
   }
 }
