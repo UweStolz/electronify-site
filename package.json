@@ -37,6 +37,8 @@
     "@types/fs-extra": "^8.0.1",
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.19",
+    "@types/lodash.capitalize": "4.2.3",
+    "@types/lodash.invoke": "4.5.3",
     "@types/node": "^12.7.12",
     "@types/pino": "^5.8.12",
     "@types/yargs": "^13.0.3",
