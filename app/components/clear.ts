@@ -1,35 +1,20 @@
 import { session, BrowserWindow } from 'electron';
+import capitalize from 'lodash.capitalize';
+import invoke from 'lodash.invoke';
 import { openMessageBox, openErrorBox } from './dialog';
 
-async function cache(browserWindow: BrowserWindow): Promise<void> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function clear(browserWindow: BrowserWindow, desc: string, func: string, ...args: any[]): Promise<void> {
   try {
-    await session.defaultSession.clearCache();
+    const description = capitalize(desc);
+    await invoke(session.defaultSession, `${func}`, args);
     await openMessageBox(browserWindow, {
       buttons: ['OK'],
-      message: 'Cache was successfully cleared',
-      title: 'Cache cleared',
+      message: `${description} successfully cleared`,
+      title: `${description} cleared`,
       type: 'info',
     });
   } catch (err) {
-    openErrorBox('An error occurred', 'Could not clear cache!');
+    openErrorBox('An error occurred', `Could not clear ${desc}!`);
   }
 }
-
-async function cookies(browserWindow: BrowserWindow): Promise<void> {
-  try {
-    await session.defaultSession.clearStorageData({ storages: ['cookies'] });
-    await openMessageBox(browserWindow, {
-      buttons: ['OK'],
-      message: 'Cookies were successfully cleared',
-      title: 'Cookies cleared',
-      type: 'info',
-    });
-  } catch (err) {
-    openErrorBox('occurred', 'Could not clear cookies!');
-  }
-}
-
-export default {
-  cache,
-  cookies,
-};
