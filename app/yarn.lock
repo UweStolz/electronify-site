@@ -29,12 +29,31 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@types/node@^12.0.12":
-  version "12.12.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.6.tgz#a47240c10d86a9a57bb0c633f0b2e0aea9ce9253"
-  integrity sha512-FjsYUPzEJdGXjwKqSpE0/9QEh6kzhTAeObA54rn6j3rR4C/mzpI9L0KNfoeASSPMMdxIsoJuCLDWcM/rVjIsSA==
+"@types/lodash.capitalize@4.2.3":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@types/lodash.capitalize/-/lodash.capitalize-4.2.3.tgz#3a91ad84742974897cfe0b455d6abb5cc7ddf416"
+  integrity sha512-yzUN8sZaMKI9Q6uITEWMmsRBtGJMKvtBFJMzLb51jSC2h4sZD5StQRvDW7JQtM0KOVi+OlVJ7/8tMgRdck2ndg==
+  dependencies:
+    "@types/lodash" "*"
 
-boolean@^2.0.2:
+"@types/lodash.invoke@4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@types/lodash.invoke/-/lodash.invoke-4.5.3.tgz#a84fedd2833d6ba887cc89d02c6b11daf80e243b"
+  integrity sha512-0dQy75bm4YmP4KEEA5W6AsF/uV1NHENcosWueWJTp/s/7alo8tVYBqDraGZNY/esmeuNktPs0mSO5RbWJQaD3w==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.147"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.147.tgz#8ca5cfa9c67753dcb73e507d1bbf1c4f8ba6f029"
+  integrity sha512-+0zY1Axql6ru5T85Rh6aR6Zr0xT7c0USLqsHv01b3ID//dOrV3OvpXJGjm69+4QpxoZ0oMNEfmW1ltwXe2WVzQ==
+
+"@types/node@^12.0.12":
+  version "12.12.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.7.tgz#01e4ea724d9e3bd50d90c11fd5980ba317d8fa11"
+  integrity sha512-E6Zn0rffhgd130zbCbAr/JdXfXkoOUFAKNs/rF8qnafSJ8KYaA/j3oz7dcwal+lYjLA7xvdd5J4wdYpCTlP8+w==
+
+boolean@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/boolean/-/boolean-2.0.3.tgz#da4a5c5a85231d64dd4f6022a0fa5a66adc76653"
   integrity sha512-iHzXeFCXWrpjYE7DToXGCBPGZf0eVISqzL+4sgrOSYEKXnb59WHPFvGTTyCj6zJ/MuuLAxEn8zPkrTHHzlt3IA==
@@ -82,10 +101,10 @@ config-chain@^1.1.11:
     ini "^1.3.4"
     proto-list "~1.2.1"
 
-core-js@^3.3.3:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.0.tgz#29ea478601789c72f2978e9bb98f43546f89d3aa"
-  integrity sha512-lQxb4HScV71YugF/X28LtePZj9AB7WqOpcB+YztYxusvhrgZiQXPmCYfPC5LHsw/+ScEtDbXU3xbqH3CjBRmYA==
+core-js@^3.4.0:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.1.tgz#76dd6828412900ab27c8ce0b22e6114d7ce21b18"
+  integrity sha512-KX/dnuY/J8FtEwbnrzmAjUYgLqtk+cxM86hfG60LGiW3MmltIc2yAmDgBgEkfm0blZhUrdr1Zd84J2Y14mLxzg==
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -163,9 +182,9 @@ electron-prompt@^1.4.0:
     doc-ready "^1.0.4"
 
 electron@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-7.1.0.tgz#29ca01958ddbc6fb5ec6950279efec4f93045384"
-  integrity sha512-ITWtgmiXvyzdz22g/ksBORay1aBrt+JwFfL4PWi1SoSk9yWOllIoa8smneQ121DCgQLLhfmT3aCF1qQhxEpCIQ==
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-7.1.1.tgz#98be17d850e64689a09ab6dd1e437b36307f2fcf"
+  integrity sha512-NJPv4SuMJlRUtXBd/Ey9XKSLOZ4+hxsOrHHPXwrBQNNdeZesoSrTMgPymee/FwMRtrSt0Pz8NccEZUu/pxmbhQ==
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^12.0.12"
@@ -249,15 +268,15 @@ get-stream@^5.1.0:
     pump "^3.0.0"
 
 global-agent@^2.0.2:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/global-agent/-/global-agent-2.1.5.tgz#0e9b8367f7068bb6fa360a8f920499e1d873762f"
-  integrity sha512-pYJjCxxNBzYxo6iNO62JZn8iCFVbvpiM0zE4w/G5hBNIvLjnvzIeCVQPMKc3aK8ju5L7Q8NNI/oBSosU0eeSYw==
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/global-agent/-/global-agent-2.1.6.tgz#cc2b0102a6d440b68c87fd0e61a366bf607dd3aa"
+  integrity sha512-fL+xfraAlc1MXU8Gs0DAg/eHH+H1CjxbK+BLU3Qt55dAVMAQ8fH8k/UrLwV4A+Vk/hl/TePWuTxFnqJzCV1/Kw==
   dependencies:
-    boolean "^2.0.2"
-    core-js "^3.3.3"
+    boolean "^2.0.3"
+    core-js "^3.4.0"
     es6-error "^4.1.1"
     matcher "^2.0.0"
-    roarr "^2.14.2"
+    roarr "^2.14.4"
     semver "^6.3.0"
     serialize-error "^5.0.0"
 
@@ -346,10 +365,20 @@ keyv@^3.0.0:
   dependencies:
     json-buffer "3.0.0"
 
+lodash.capitalize@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/lodash.capitalize/-/lodash.capitalize-4.2.1.tgz#f826c9b4e2a8511d84e3aca29db05e1a4f3b72a9"
+  integrity sha1-+CbJtOKoUR2E46yinbBeGk87cqk=
+
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
+lodash.invoke@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/lodash.invoke/-/lodash.invoke-4.5.2.tgz#01ca07e470903affa3ffec7ad2ed22723d2f697c"
+  integrity sha1-AcoH5HCQOv+j/+x60u0icj0vaXw=
 
 lodash@^4.17.10:
   version "4.17.15"
@@ -483,12 +512,12 @@ responselike@^1.0.2:
   dependencies:
     lowercase-keys "^1.0.0"
 
-roarr@^2.14.2:
-  version "2.14.3"
-  resolved "https://registry.yarnpkg.com/roarr/-/roarr-2.14.3.tgz#5f62c9389a200b44e4a4673cef97bd7190ca03e9"
-  integrity sha512-D4BpKVruUDCJ9DJWcC7T+fx4o10IUYJ7MdmjM4Skx1aqc42CE7LGzPDUAfczibhavNGcnY1IHqJdq16NmiG4rQ==
+roarr@^2.14.4:
+  version "2.14.4"
+  resolved "https://registry.yarnpkg.com/roarr/-/roarr-2.14.4.tgz#2d9d26864ce95ce570b4b5c5e548aefd40bb2bf7"
+  integrity sha512-QMzRAQGZFPgnx4nNWp4Q+WHfiZh2HTSEjNaxFLrEIj3PmcQ1GHL5OjaaIyF9ybUDD2aZ9t3Awc/obrRPils9ng==
   dependencies:
-    boolean "^2.0.2"
+    boolean "^2.0.3"
     detect-node "^2.0.4"
     globalthis "^1.0.0"
     json-stringify-safe "^5.0.1"
@@ -600,9 +629,9 @@ url-parse-lax@^3.0.0:
     prepend-http "^2.0.0"
 
 user-agents@^1.0.423:
-  version "1.0.423"
-  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.423.tgz#2e4dac23cef0c6d2fcab5b91af884a4e1a362e22"
-  integrity sha512-y0gXvPEkoZsW8BA+PaEAOd/c194LI5uab2ztEwUQ2mKjpoGtZAh++E8BhVsG+sVeCaXC82jLDGeBf4Z2ZMM/kQ==
+  version "1.0.441"
+  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.441.tgz#49af1e17dc82042a13d445aa20fb5c4fc82a1518"
+  integrity sha512-fAT1zr2/GGMqZ36YfgEi6r+D4nvh5mSdQHiYwyv9OKEj0Lz/+/TW+nKxHht6Kp34/io+j2jA/Dug+AWw8QGOlA==
   dependencies:
     dot-json "^1.1.0"
     lodash.clonedeep "^4.5.0"

@@ -9,10 +9,14 @@
         "start": "electron ."
     },
     "devDependencies": {
+        "@types/lodash.capitalize": "4.2.3",
+        "@types/lodash.invoke": "4.5.3",
         "electron": "^7.1.0"
     },
     "dependencies": {
         "electron-prompt": "^1.4.0",
+        "lodash.capitalize": "^4.2.1",
+        "lodash.invoke": "^4.5.2",
         "tslib": "^1.10.0",
         "user-agents": "^1.0.423"
     }
