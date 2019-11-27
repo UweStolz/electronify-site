@@ -66,7 +66,7 @@ export default async function execute(): Promise<void> {
     await initialize(process.argv);
     logGreeting();
 
-    const argsFromCli = await collectArgumentsFromCli(['verbose', 'url', 'os', 'format', 'arch', 'name', 'icon']);
+    const argsFromCli = await collectArgumentsFromCli(['auto', 'verbose', 'url', 'os', 'format', 'arch', 'name', 'icon']);
     if (argsFromCli.verbose) {
       logger.level = 'debug';
       process.env.DEBUG = 'electron-builder';

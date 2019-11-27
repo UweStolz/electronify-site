@@ -21,6 +21,7 @@ declare global {
 
         interface Args {
             [key: string]: string | undefined;
+            auto?: string;
             url?: string;
             os?: string;
             format?: string;
