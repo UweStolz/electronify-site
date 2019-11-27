@@ -28,8 +28,10 @@
     "image-size": "^0.8.3",
     "inquirer": "^7.0.0",
     "inquirer-fuzzy-path": "^2.1.0",
+    "page-icon-finder": "^1.0.9",
     "pino": "^5.13.4",
     "pino-pretty": "^3.2.2",
+    "sharp": "^0.23.3",
     "tslib": "^1.10.0",
     "yargs": "^14.2.0"
   },
