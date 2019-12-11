@@ -17,6 +17,10 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {'devDependencies': true, 'optionalDependencies': true, 'peerDependencies': true}],
     '@typescript-eslint/ban-ts-ignore': 'off',
     'max-len': [0, { code: 100, ignoreStrings: true }],
+    'import/extensions': ['error', 'always', {
+      'js': 'ignorePackages',
+      'ts': 'ignorePackages',
+    }],
   },
 
   parser: "@typescript-eslint/parser",
