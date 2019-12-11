@@ -15,11 +15,13 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
           app: `${path}/app`,
           buildResources: data.iconPath as string || undefined,
         },
-        files: [''], // TODO - Add Path
+        // files: [''], // TODO - Add Path
         productName: data.appName || data.url as string,
       },
+      targets: data.auto
+        ? Platform.current().createTarget(data.format as string)
       // @ts-ignore
-      targets: Platform[data.os].createTarget(data.format as string, data.architecture as number),
+        : Platform[data.os].createTarget(data.format as string, data.architecture as number),
     });
   } catch (error) {
     throw Error();

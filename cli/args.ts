@@ -37,8 +37,11 @@ export async function initialize(args: string[]): Promise<void> {
     .locale('en')
     .option('auto',
       {
-        alias: 'a',
+        alias: 'A',
         description: 'Use automatic mode',
+        conflicts: [
+          'os', 'format', 'arch', 'name', 'icon',
+        ],
         type: 'boolean',
       })
     .option('url', {
