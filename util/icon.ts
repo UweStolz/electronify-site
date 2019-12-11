@@ -1,6 +1,6 @@
-import pageIcon from 'page-icon-finder';
-import { PageIcon } from 'page-icon-finder/types';
+import pageIcon, { PageIcon } from 'page-icon-finder';
 import sharp, { OutputInfo } from 'sharp';
+import logger from '../cli/logger';
 
 async function getIcon(url: string): Promise<PageIcon.IconResponse> {
   const result = await pageIcon(url, '.png');
@@ -12,8 +12,8 @@ function resizeImage(image: Buffer): void {
     .resize(256, 256)
     .png()
     .toFile('./test.png', (err: Error, info: OutputInfo) => {
-      if (err) console.error(err);
-      console.log('INFO:\n', info);
+      if (err) logger.error(err);
+      logger.info(info);
     });
 }
 
