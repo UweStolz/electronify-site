@@ -49,9 +49,9 @@ async function build(choices: Electronify.Choices): Promise<void> {
   process.stdout.write = (): void => {};
   try {
     spinnerInstance.start();
+    logger.debug(choices, 'Settings:');
     await buildArtifact(choices);
     spinnerInstance.text = 'Successfully finished building the artifact';
-    logger.debug(choices, 'Your settings are:');
     state = true;
     shouldLogFarewell = true;
   } catch (err) {

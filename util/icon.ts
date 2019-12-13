@@ -15,7 +15,7 @@ function resizeImage(image: Buffer): void {
     .png()
     .toFile(filepath, (err: Error, info: OutputInfo) => {
       if (err) logger.error(err);
-      logger.debug(info);
+      logger.debug(info, 'Icon:');
     });
 }
 
