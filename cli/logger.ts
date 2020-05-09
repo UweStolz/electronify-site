@@ -1,6 +1,11 @@
-import pino from 'pino';
+import pino, { destination, DestinationStream, LoggerOptions } from 'pino';
 
-const logger = pino({
+// @ts-ignore
+const destinationInstance = destination({
+  sync: false,
+}) as DestinationStream;
+
+const options: LoggerOptions = {
   base: null,
   prettyPrint: {
     colorize: true,
@@ -9,6 +14,11 @@ const logger = pino({
     errorProps: '',
     translateTime: 'HH:MM:ss',
   },
-});
+};
+
+const logger = pino(
+  options,
+  destinationInstance,
+);
 
 export default logger;
