@@ -105,9 +105,9 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
 export default async function execute(): Promise<void> {
   let osForGivenFormat;
   let skipChoices = false;
+  logGreeting();
   try {
     await initialize(process.argv);
-    logGreeting();
 
     const argsFromCli = await collectArgumentsFromCli([
       'auto', 'verbose', 'url', 'os', 'format', 'arch', 'name', 'icon',
