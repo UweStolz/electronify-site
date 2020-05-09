@@ -2,6 +2,7 @@ import preprocessData from './preProcess';
 
 test('The Data gets processed successfully with W3', async () => {
   const choices: Electronify.Choices = {
+    auto: false,
     appName: '',
     architecture: 'x64',
     format: 'snap',
@@ -17,6 +18,7 @@ test('The Data gets processed successfully with W3', async () => {
 
 test('The Data gets processed successfully without W3', async () => {
   const choices: Electronify.Choices = {
+    auto: false,
     appName: '',
     architecture: 'x64',
     format: 'snap',
