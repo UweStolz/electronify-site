@@ -23,6 +23,6 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
         : Platform[data.os].createTarget(data.format as string, data.architecture as number),
     });
   } catch (error) {
-    throw Error();
+    throw Error(error);
   }
 }

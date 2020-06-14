@@ -56,6 +56,9 @@ async function build(choices: Electronify.Choices): Promise<void> {
     shouldLogFarewell = true;
   } catch (err) {
     spinnerInstance.text = 'An error occurred while building the artifact!';
+  if( logger.level === 'debug') {
+    logger.error(err);
+  }
   } finally {
     process.stdout.write = originalStdoutWrite;
     setSpinnerState(spinnerInstance, state);
