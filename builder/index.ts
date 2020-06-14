@@ -15,7 +15,6 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
           app: `${path}/app`,
           buildResources: data.iconPath as string || undefined,
         },
-        // files: [''], // TODO - Add Path
         productName: data.appName || data.url as string,
       },
       targets: data.auto
