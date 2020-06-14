@@ -1,5 +1,4 @@
 import os from 'os';
-import { resolve } from 'path';
 
 function getBaseName(url: string): string {
   const host = new URL(url).hostname;
@@ -37,7 +36,7 @@ function setDefaultOptions(choices: Electronify.Choices): Electronify.Choices {
     appName: choices.appName,
     architecture: '',
     format: formatForOS,
-    iconPath: resolve(),
+    iconPath: './build',
     os: currentOS,
     url: nameFromUrl,
   };

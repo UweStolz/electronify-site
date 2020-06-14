@@ -8,7 +8,7 @@ async function getIcon(url: string): Promise<PageIcon.IconResponse> {
 }
 
 function resizeImage(image: Buffer): void {
-  const filepath = './icon.png';
+  const filepath = './build/icon.png';
   sharp(image)
     .resize(512, 512)
     .png()
