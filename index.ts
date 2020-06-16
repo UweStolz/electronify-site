@@ -44,7 +44,6 @@ async function build(choices: Electronify.Choices): Promise<void> {
   });
   let state = false;
   const originalStdoutWrite = process.stdout.write.bind(process.stdout);
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   process.stdout.write = (): void => {};

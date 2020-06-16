@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import fsExtra from 'fs-extra';
 import * as args from './cli/args';
 import * as exitProcess from './util/system';

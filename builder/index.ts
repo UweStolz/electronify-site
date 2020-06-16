@@ -19,7 +19,6 @@ export default async function buildArtifact(choices: Electronify.Choices): Promi
       },
       targets: data.auto
         ? Platform.current().createTarget(data.format as string)
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
         : Platform[data.os].createTarget(data.format as string, data.architecture as number),
     });

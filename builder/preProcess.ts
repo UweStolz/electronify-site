@@ -52,7 +52,6 @@ function setCustomOptions(choices: Electronify.Choices): Electronify.Choices {
     armv7l: 2,
     arm64: 3,
   };
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const arch: number = archMap[choices.architecture];
   const customOptions: Electronify.Choices = {
