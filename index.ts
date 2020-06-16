@@ -44,6 +44,7 @@ async function build(choices: Electronify.Choices): Promise<void> {
   });
   let state = false;
   const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   process.stdout.write = (): void => {};
@@ -56,9 +57,9 @@ async function build(choices: Electronify.Choices): Promise<void> {
     shouldLogFarewell = true;
   } catch (err) {
     spinnerInstance.text = 'An error occurred while building the artifact!';
-  if( logger.level === 'debug') {
-    logger.error(err);
-  }
+    if (logger.level === 'debug') {
+      logger.error(err);
+    }
   } finally {
     process.stdout.write = originalStdoutWrite;
     setSpinnerState(spinnerInstance, state);
@@ -77,7 +78,8 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
 
   if (skipChoices) {
     urlOfChoice = cliArgs.url || await ask.forURL();
-    await downloadAndResizeIcon(urlOfChoice);
+    const { platform } = process;
+    await downloadAndResizeIcon(urlOfChoice, platform);
   } else {
     urlOfChoice = cliArgs.url || await ask.forURL();
     osOfChoice = osForGivenFormat || cliArgs.os || await ask.forOS();
@@ -86,7 +88,11 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
     architectureOfChoice = cliArgs.arch || await ask.forArch();
     nameOfChoice = cliArgs.name || '';
     includeCustomIcon = !cliArgs.iconPath ? await ask.forCustomIcon() : false;
-    iconOfChoice = includeCustomIcon ? await ask.forIcon() : cliArgs.iconPath as string;
+    if (includeCustomIcon) {
+      iconOfChoice = await ask.forIcon();
+    } else {
+      await downloadAndResizeIcon(urlOfChoice, osOfChoice);
+    }
   }
 
   const useAutoMode = cliArgs.auto as unknown as boolean;
@@ -103,7 +109,6 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
 
   return choices;
 }
-
 
 export default async function execute(): Promise<void> {
   let osForGivenFormat;

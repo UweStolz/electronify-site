@@ -1,5 +1,3 @@
-import os from 'os';
-
 function getBaseName(url: string): string {
   const host = new URL(url).hostname;
   const baseName = host.substring(0, 4) === 'www.'
@@ -12,7 +10,8 @@ function setDefaultOptions(choices: Electronify.Choices): Electronify.Choices {
   const nameFromUrl: string = getBaseName(choices.url as string);
   let currentOS: string;
   let formatForOS: string;
-  switch (os.platform()) {
+  const { platform } = process;
+  switch (platform) {
     case 'darwin':
       currentOS = 'macos';
       formatForOS = 'dmg';
@@ -53,6 +52,7 @@ function setCustomOptions(choices: Electronify.Choices): Electronify.Choices {
     armv7l: 2,
     arm64: 3,
   };
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const arch: number = archMap[choices.architecture];
   const customOptions: Electronify.Choices = {

@@ -7,9 +7,25 @@ async function getIcon(url: string): Promise<PageIcon.IconResponse> {
   return result;
 }
 
-function resizeImage(image: Buffer): void {
-  const filepath = './build/icon.png';
-  sharp(image)
+function saveIconsForLinux(icon: Buffer): void {
+  const sizes = [16, 32, 48, 64, 128, 256, 512];
+  const iconsPath = './build/icons';
+  sizes.forEach((size) => {
+    const filepath = `${iconsPath}/${size}x${size}.png`;
+    sharp(icon)
+      .resize(size, size)
+      .png()
+      .toFile(filepath, (err: Error, info: OutputInfo) => {
+        if (err) logger.error(err);
+        logger.debug(info, 'Icon:');
+      });
+  });
+}
+
+function saveIconForWindowsOrMac(icon: Buffer): void {
+  const iconPath = './build';
+  const filepath = `${iconPath}/icon.png`;
+  sharp(icon)
     .resize(512, 512)
     .png()
     .toFile(filepath, (err: Error, info: OutputInfo) => {
@@ -18,8 +34,28 @@ function resizeImage(image: Buffer): void {
     });
 }
 
-export default async function downloadAndResizeIcon(url: string): Promise<void> {
-  const img = await getIcon(url);
-  const bufferFromIcon = img.data as Buffer;
-  resizeImage(bufferFromIcon);
+function resizeIcon(icon: Buffer, platform: string): void {
+  switch (platform) {
+    case 'linux':
+      saveIconsForLinux(icon);
+      break;
+    case 'win32' || 'windows':
+      saveIconForWindowsOrMac(icon);
+      break;
+    case 'darwin' || 'macos':
+      saveIconForWindowsOrMac(icon);
+      break;
+    default:
+      break;
+  }
+}
+
+export default async function downloadAndResizeIcon(url: string, platform: string): Promise<void> {
+  try {
+    const img = await getIcon(url);
+    const bufferFromIcon = img.data as Buffer;
+    resizeIcon(bufferFromIcon, platform);
+  } catch {
+    logger.error('Could not download or create icon(s)!');
+  }
 }
