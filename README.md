@@ -11,7 +11,7 @@ yarn electronify
 
 ### Commands
 
-```s
+```
 Options:
   --version      Show version number                                   [boolean]
   --url, -u      Your URL you want to build an archive for.             [string]
@@ -41,7 +41,17 @@ Supported: x64, ia32, armv7l, arm64
 
 #### Icons
 
-The icon needs to be 512x512 and to be of type `.png`
+Windows:
+- Size: at least 256x256
+- Type `.png` or `.ico`  
+
+macOS:
+- Size: 512x512
+- Type `.icns`  
+
+Linux:
+- Size: 512x512
+- Type: `.icns`
 
 ## Installation
 
