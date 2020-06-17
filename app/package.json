@@ -5,8 +5,10 @@
     "author": "UweStolz",
     "license": "MIT",
     "private": true,
+    "devDependencies": {
+        "electron": "^9.0.4"
+    },
     "dependencies": {
-        "electron": "^9.0.4",
         "electron-prompt": "^1.5.1",
         "lodash.capitalize": "^4.2.1",
         "lodash.invoke": "^4.5.2",

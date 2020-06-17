@@ -17,7 +17,7 @@
   "scripts": {
     "lint": "yarn run eslint --ext .ts .",
     "install:prod": "yarn install --offline",
-    "postinstall": "yarn electron-builder install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
     "start:dev": "ts-node ./bin/electronify.js",
     "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
