@@ -9,7 +9,7 @@ const options: LoggerOptions = {
   base: null,
   prettyPrint: {
     colorize: true,
-    crlf: false,
+    crlf: true,
     errorLikeObjectKeys: ['err', 'error'],
     errorProps: '',
     translateTime: 'HH:MM:ss',
