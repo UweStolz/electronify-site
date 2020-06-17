@@ -1,6 +1,6 @@
 # electronify
 
-[![Actions Status](https://github.com/UweStolz/electronify/workflows/npmPublish/badge.svg)](https://github.com/UweStolz/electronify/actions)
+[![Actions Status](https://github.com/UweStolz/electronify-site/workflows/npmPublish/badge.svg)](https://github.com/UweStolz/electronify-site/actions)
 
 ## Overview
 
@@ -40,16 +40,14 @@ Supported: x64, ia32, armv7l, arm64
 
 #### Icons
 
+If you want to use a custom icon it shold be 512x512 in size  
 Windows:
-- Size: at least 256x256
 - Type `.png` or `.ico`  
 
-macOS:
-- Size: 512x512
+macOS
 - Type `.icns`  
 
 Linux:
-- Size: 512x512
 - Type: `.icns`
 
 ## Installation

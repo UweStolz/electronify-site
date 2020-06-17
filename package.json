@@ -1,7 +1,7 @@
 {
   "name": "electronify-site",
   "description": "Electron wrapper for websites",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./built/bin/electronify.js",
   "bin": {
     "electronify": "./built/bin/electronify.js"
@@ -20,11 +20,10 @@
     "postinstall": "electron-builder install-app-deps",
     "start": "node --harmony ./bin/electronify.js",
     "start:dev": "ts-node ./bin/electronify.js",
-    "copy-lock-files": "yarn run ncp ./yarn.lock ./built/yarn.lock && yarn run ncp ./app/yarn.lock ./built/app/yarn.lock",
     "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
     "compile:watch": "yarn run tsc -w -p ./tsconfig.build.json"
   },
-  "repository": "https://github.com/UweStolz/electronify",
+  "repository": "https://github.com/UweStolz/electronify-site",
   "author": "UweStolz",
   "license": "MIT",
   "private": false,
