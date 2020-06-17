@@ -5,6 +5,9 @@
     "author": "UweStolz",
     "license": "UNLICENSED",
     "private": true,
+    "devDependencies": {
+        "electron": "^9.0.4"
+    },
     "dependencies": {
         "electron-prompt": "^1.5.1",
         "lodash.capitalize": "^4.2.1",
