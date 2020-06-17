@@ -50,7 +50,7 @@ export async function forName(): Promise <inquirer.Answers> {
   return ask({
     message: 'What name do you want to give your app?',
     type: 'input',
-    validate: (answer: { length: number }) => answer.length > 25,
+    validate: (answer: { length: number }) => answer.length < 25,
   });
 }
 
