@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "main": "index.js",
     "author": "UweStolz",
-    "license": "UNLICENSED",
+    "license": "MIT",
     "private": true,
     "devDependencies": {
         "electron": "^9.0.4"
