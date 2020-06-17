@@ -1,7 +1,7 @@
 {
   "name": "electronify-site",
   "description": "Electron wrapper for websites",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "main": "./built/bin/electronify.js",
   "bin": {
     "electronify": "./built/bin/electronify.js"

@@ -1,8 +1,9 @@
 import pageIcon, { PageIcon } from 'page-icon-finder';
 import sharp, { OutputInfo } from 'sharp';
+import { join } from 'path';
 import logger from '../cli/logger';
 
-const path = __dirname;
+const path = join(__dirname, '..');
 
 async function getIcon(url: string): Promise<PageIcon.IconResponse> {
   const result = await pageIcon(url, '.png');
