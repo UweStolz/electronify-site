@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { writeJSON } from 'fs-extra';
+import { join } from 'path';
 import logger from './cli/logger';
 import * as ask from './cli/ask';
 import {
@@ -116,7 +117,8 @@ export default async function execute(): Promise<void> {
       skipChoices = true;
     }
     const choices = await collectChoices(argsFromCli, osForGivenFormat, skipChoices);
-    await writeJSON('./app/config.json', { url: choices.url });
+    const configPath = join(__dirname, 'app/config.json');
+    await writeJSON(configPath, { url: choices.url });
     await build(choices);
   } catch (error) {
     logger.error('An unexpected error occurred!');

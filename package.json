@@ -1,7 +1,7 @@
 {
   "name": "electronify-site",
   "description": "Electron wrapper for websites",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "main": "./bin/electronify.js",
   "bin": {
     "electronify": "./bin/electronify.js"
@@ -28,7 +28,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "electron": "^9.0.4",
+    "electron": "9.0.4",
     "electron-builder": "^22.7.0",
     "fs-extra": "^9.0.1",
     "image-size": "^0.8.3",

@@ -6,7 +6,7 @@
     "license": "MIT",
     "private": true,
     "devDependencies": {
-        "electron": "^9.0.4"
+        "electron": "9.0.4"
     },
     "dependencies": {
         "electron-prompt": "^1.5.1",
