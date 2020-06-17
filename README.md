@@ -55,7 +55,7 @@ Linux:
 ## Installation
 
 [Yarn](https://yarnpkg.com/lang/en/) is recommended instead of npm.  
-`yarn global add electronify`
+`yarn global add electronify-site`
 
 ## License
 
