@@ -2,15 +2,9 @@
     "name": "e-app",
     "version": "0.1.0",
     "main": "index.js",
-    "author": "Uwe Stolz <example@mail.com>",
+    "author": "UweStolz",
     "license": "UNLICENSED",
     "private": true,
-    "scripts": {
-        "start": "electron ."
-    },
-    "devDependencies": {
-        "electron": "^9.0.4"
-    },
     "dependencies": {
         "electron-prompt": "^1.5.1",
         "lodash.capitalize": "^4.2.1",

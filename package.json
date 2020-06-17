@@ -22,7 +22,7 @@
     "start": "node --harmony ./bin/electronify.js",
     "start:dev": "ts-node ./bin/electronify.js",
     "copy-lock-files": "yarn run ncp ./yarn.lock ./built/yarn.lock && yarn run ncp ./app/yarn.lock ./built/app/yarn.lock",
-    "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json && yarn copy-lock-files",
+    "compile": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
     "compile:watch": "yarn run tsc -w -p ./tsconfig.build.json"
   },
   "repository": "https://github.com/UweStolz/electronify",
@@ -30,7 +30,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "electron": "^9.0.4",
     "electron-builder": "^22.7.0",
     "fs-extra": "^9.0.1",
     "image-size": "^0.8.3",
@@ -55,6 +54,7 @@
     "@types/yargs": "^15.0.5",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
+    "electron": "^9.0.4",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.21.2",

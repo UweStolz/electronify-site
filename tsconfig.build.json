@@ -34,8 +34,7 @@
         "build/empty.ts",
         "bin/*.js",
         "app/config.json",
-        "app/package.json",
-        "package.json"
+        "app/package.json"
     ],
     "exclude": [
         "**/node_modules",
