@@ -11,18 +11,6 @@ import { formatsForOs } from './util/values';
 import { getSpinner, setSpinnerState } from './util/spinner';
 import downloadAndResizeIcon from './util/icon';
 
-let shouldLogFarewell = false;
-
-function logGreeting(): void {
-  logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
-  logger.info('Hello there..');
-  logger.info('🔥🔥🔥🔥🔥🔥🔥🔥🔥');
-}
-
-function logFarewell(): void {
-  logger.info('Have fun!');
-}
-
 function matchingOsForFormat(givenFormat: string): undefined | string {
   let indexOf = -1;
   const osFormats = Object.values(formatsForOs);
@@ -53,7 +41,6 @@ async function build(choices: Electronify.Choices): Promise<void> {
     await buildArtifact(choices);
     spinnerInstance.text = 'Successfully finished building the artifact';
     state = true;
-    shouldLogFarewell = true;
   } catch (err) {
     spinnerInstance.text = 'An error occurred while building the artifact!';
     if (logger.level === 'debug') {
@@ -112,7 +99,6 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
 export default async function execute(): Promise<void> {
   let osForGivenFormat;
   let skipChoices = false;
-  logGreeting();
   try {
     await initialize(process.argv);
 
@@ -136,7 +122,5 @@ export default async function execute(): Promise<void> {
     logger.error('An unexpected error occurred!');
     logger.error(error);
     exitProcess(1);
-  } finally {
-    if (shouldLogFarewell) { logFarewell(); }
   }
 }
