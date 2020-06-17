@@ -1,8 +1,8 @@
 import { build, Platform } from 'electron-builder';
-import { resolve } from 'path';
+import { join } from 'path';
 import preprocessData from './preProcess';
 
-const path = resolve();
+const path = join(__dirname, '..');
 
 export default async function buildArtifact(choices: Electronify.Choices): Promise<void> {
   const data = await preprocessData(choices);
