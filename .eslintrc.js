@@ -3,7 +3,6 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    jest: true,
   },
 
   extends: [
@@ -33,13 +32,4 @@ module.exports = {
       },
     },
   },
-  overrides: [
-    {
-      files: ['*test.ts'],
-      rules: {
-        '@typescript-eslint/no-empty-function': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-      },
-    },
-  ],
 };

@@ -38,11 +38,8 @@
         "package.json"
     ],
     "exclude": [
-        "**/*.test.ts",
         "**/node_modules",
         "built",
-        "coverage",
-        "jest.config.js",
         ".eslintrc.js"
     ]
 }

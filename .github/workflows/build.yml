@@ -22,14 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install and test
-      run: |
-        yarn install
-        yarn test:coverage
-    - name: Upload coverage to Codecov  
-      uses: codecov/codecov-action@v1.0.3
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
-        flags: unittests
+      run: yarn install
     - name: Compile
       run: yarn run tsc -p ./tsconfig.build.json
     - name: Lint

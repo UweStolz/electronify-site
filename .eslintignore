@@ -1,7 +1,6 @@
 node_modules
 **/*.*rc
 **/*.config*
-junit.xml
 **/types
 built
 dist
@@ -10,4 +9,3 @@ bin/*
 coverage
 .github
 .vscode
-jest.config.js

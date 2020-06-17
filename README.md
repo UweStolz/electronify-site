@@ -1,6 +1,5 @@
 # electronify
 
-[![codecov](https://codecov.io/gh/UweStolz/electronify/branch/master/graph/badge.svg?token=WX5Gah4xXf)](https://codecov.io/gh/UweStolz/electronify)
 [![Actions Status](https://github.com/UweStolz/electronify/workflows/build/badge.svg)](https://github.com/UweStolz/electronify/actions)
 
 ## Overview
