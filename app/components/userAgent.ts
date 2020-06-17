@@ -1,4 +1,3 @@
-
 import { session, BrowserWindow } from 'electron';
 // @ts-ignore
 import UserAgent from 'user-agents';
@@ -6,7 +5,7 @@ import { openErrorBox, openMessageBox } from './dialog';
 
 interface UserAgentOptions {
   appName?: string;
-  connection?: object;
+  connection?: Record<string, unknown>;
   cpuClass?: string;
   deviceCategory?: 'desktop'|'mobile'|'tablet';
   oscpu?: string;
@@ -22,8 +21,7 @@ interface UserAgentOptions {
 
 export default async function setUserAgent(userAgentOptions: UserAgentOptions|RegExp, parentWindow: BrowserWindow):
 Promise<void> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let userAgent: any;
+  let userAgent: UserAgent;
   try {
     userAgent = new UserAgent(userAgentOptions);
     await openMessageBox(parentWindow, {

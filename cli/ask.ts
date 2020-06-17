@@ -93,11 +93,10 @@ export async function forCustomIcon(): Promise<inquirer.Answers> {
 export async function forIcon(): Promise<inquirer.Answers> {
   return ask({
     default: `${process.cwd()}`,
-    itemType: 'file',
-    message: 'What is the path to the icon you whish to use?',
+    itemType: 'folder',
+    message: 'What is the folder containing the icon you whish to use?',
     name: 'path',
     type: 'fuzzypath',
-    excludePath: (nodePath: string) => nodePath.startsWith('node_modules'),
     validate: (answer: string) => validateIcon(answer),
   });
 }

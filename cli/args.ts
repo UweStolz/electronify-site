@@ -35,6 +35,15 @@ export async function initialize(args: string[]): Promise<void> {
   // eslint-disable-next-line no-unused-expressions
   program = yargs
     .locale('en')
+    .option('auto',
+      {
+        alias: 'A',
+        description: 'Use automatic mode',
+        conflicts: [
+          'os', 'format', 'arch', 'name', 'icon',
+        ],
+        type: 'boolean',
+      })
     .option('url', {
       alias: 'u',
       description: 'Your URL you want to build an archive for.',

@@ -1,7 +1,5 @@
 # electronify
 
-[![codecov](https://codecov.io/gh/UweStolz/electronify/branch/master/graph/badge.svg?token=WX5Gah4xXf)](https://codecov.io/gh/UweStolz/electronify)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9ddab2ab81594166acdc333b2e5f7437)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=UweStolz/electronify&utm_campaign=Badge_Grade)
 [![Actions Status](https://github.com/UweStolz/electronify/workflows/build/badge.svg)](https://github.com/UweStolz/electronify/actions)
 
 ## Overview
@@ -12,7 +10,7 @@ yarn electronify
 
 ### Commands
 
-```s
+```
 Options:
   --version      Show version number                                   [boolean]
   --url, -u      Your URL you want to build an archive for.             [string]
@@ -42,7 +40,17 @@ Supported: x64, ia32, armv7l, arm64
 
 #### Icons
 
-The icon needs to be 512x512 and to be of type `.png`
+Windows:
+- Size: at least 256x256
+- Type `.png` or `.ico`  
+
+macOS:
+- Size: 512x512
+- Type `.icns`  
+
+Linux:
+- Size: 512x512
+- Type: `.icns`
 
 ## Installation
 

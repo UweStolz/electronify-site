@@ -16,7 +16,7 @@
         "esModuleInterop": true,
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "outDir": "built",
         "lib": [
             "es5",
@@ -31,17 +31,15 @@
     },
     "include": [
         "**/*.ts",
+        "build/empty.ts",
         "bin/*.js",
         "app/config.json",
         "app/package.json",
         "package.json"
     ],
     "exclude": [
-        "**/*.test.ts",
         "**/node_modules",
         "built",
-        "coverage",
-        "jest.config.js",
         ".eslintrc.js"
     ]
 }
