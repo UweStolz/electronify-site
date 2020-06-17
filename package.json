@@ -2,9 +2,9 @@
   "name": "electronify-site",
   "description": "Electron wrapper for websites",
   "version": "0.2.8",
-  "main": "./built/bin/electronify.js",
+  "main": "./bin/electronify.js",
   "bin": {
-    "electronify": "./built/bin/electronify.js"
+    "electronify": "./bin/electronify.js"
   },
   "keywords": [
     "electron",
@@ -58,7 +58,6 @@
     "eslint-plugin-import": "^2.21.2",
     "ncp": "^2.0.0",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }
