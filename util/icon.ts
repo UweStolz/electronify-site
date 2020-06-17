@@ -1,6 +1,9 @@
 import pageIcon, { PageIcon } from 'page-icon-finder';
 import sharp, { OutputInfo } from 'sharp';
+import { resolve } from 'path';
 import logger from '../cli/logger';
+
+const path = resolve();
 
 async function getIcon(url: string): Promise<PageIcon.IconResponse> {
   const result = await pageIcon(url, '.png');
@@ -9,7 +12,7 @@ async function getIcon(url: string): Promise<PageIcon.IconResponse> {
 
 function saveIconsForLinux(icon: Buffer): void {
   const sizes = [16, 32, 48, 64, 128, 256, 512];
-  const iconsPath = './build/icons';
+  const iconsPath = `${path}/build/icons`;
   sizes.forEach((size) => {
     const filepath = `${iconsPath}/${size}x${size}.png`;
     sharp(icon)
@@ -23,8 +26,7 @@ function saveIconsForLinux(icon: Buffer): void {
 }
 
 function saveIconForWindowsOrMac(icon: Buffer): void {
-  const iconPath = './build';
-  const filepath = `${iconPath}/icon.png`;
+  const filepath = `${path}/build/icon.png`;
   sharp(icon)
     .resize(512, 512)
     .png()

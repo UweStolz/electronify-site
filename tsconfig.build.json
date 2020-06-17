@@ -31,7 +31,6 @@
     },
     "include": [
         "**/*.ts",
-        "build/empty.ts",
         "bin/*.js",
         "app/config.json",
         "app/package.json"
