@@ -85,7 +85,7 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
     includeGenericFormats = (cliArgs.format || osOfChoice === 'generic') ? false : await ask.forGenericFormats();
     formatOfChoice = cliArgs.format || await ask.forFormat(osOfChoice, includeGenericFormats);
     architectureOfChoice = cliArgs.arch || await ask.forArch();
-    nameOfChoice = cliArgs.name || '';
+    nameOfChoice = cliArgs.name || await ask.forName();
     includeCustomIcon = !cliArgs.iconPath ? await ask.forCustomIcon() : false;
     if (includeCustomIcon) {
       iconOfChoice = await ask.forIcon();
