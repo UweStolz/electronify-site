@@ -1,6 +1,6 @@
 # electronify
 
-[![Actions Status](https://github.com/UweStolz/electronify/workflows/build/badge.svg)](https://github.com/UweStolz/electronify/actions)
+[![Actions Status](https://github.com/UweStolz/electronify/workflows/npmPublish/badge.svg)](https://github.com/UweStolz/electronify/actions)
 
 ## Overview
 
