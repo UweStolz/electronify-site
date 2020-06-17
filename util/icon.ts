@@ -39,10 +39,16 @@ function resizeIcon(icon: Buffer, platform: string): void {
     case 'linux':
       saveIconsForLinux(icon);
       break;
-    case 'win32' || 'windows':
+    case 'win32':
       saveIconForWindowsOrMac(icon);
       break;
-    case 'darwin' || 'macos':
+    case 'windows':
+      saveIconForWindowsOrMac(icon);
+      break;
+    case 'darwin':
+      saveIconForWindowsOrMac(icon);
+      break;
+    case 'macos':
       saveIconForWindowsOrMac(icon);
       break;
     default:
