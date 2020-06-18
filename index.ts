@@ -76,7 +76,7 @@ async function collectChoices(cliArgs: Electronify.Args, osForGivenFormat: strin
     nameOfChoice = cliArgs.name || await ask.forName();
     includeCustomIcon = !cliArgs.iconPath ? await ask.forCustomIcon() : false;
     if (includeCustomIcon) {
-      iconOfChoice = await ask.forIcon();
+      iconOfChoice = osOfChoice === 'linux' ? await ask.forIconFolder() : await ask.forIconPath();
     } else {
       await downloadAndResizeIcon(urlOfChoice, osOfChoice);
     }

@@ -98,13 +98,25 @@ export async function forCustomIcon(): Promise<inquirer.Answers> {
   });
 }
 
-export async function forIcon(): Promise<inquirer.Answers> {
+export async function forIconFolder(): Promise<inquirer.Answers> {
   return ask({
     default: `${process.cwd()}`,
-    itemType: 'folder',
+    itemType: 'directory',
     message: 'What is the folder containing the icon you whish to use?',
     name: 'path',
     type: 'fuzzypath',
+    excludeFilter: (nodePath: string) => nodePath === '.',
+  });
+}
+
+export async function forIconPath(): Promise<inquirer.Answers> {
+  return ask({
+    default: `${process.cwd()}`,
+    itemType: 'file',
+    message: 'What is the path to the icon you whish to use?',
+    name: 'path',
+    type: 'fuzzypath',
+    excludeFilter: (nodePath: string) => nodePath === '.',
     validate: (answer: string) => validateIcon(answer),
   });
 }
