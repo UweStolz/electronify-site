@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-const { join } = require('path');
-const path = join(__dirname, '..');
-const index = `${path}/index`;
-const electronify = require(index);
-
+var { resolve } = require('path');
+var electronify = require(resolve(__dirname, "../index.js"));
 electronify.default();
