@@ -30,7 +30,6 @@
     },
     "include": [
         "**/*.ts",
-        "bin/*.js",
         "app/config.json",
         "app/package.json",
         "package.json"
