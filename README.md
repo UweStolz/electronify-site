@@ -27,7 +27,7 @@ Options:
 
 #### Formats
 
-This are the theoretically possible formate see the electron-builder [documentation](https://www.electron.build/multi-platform-build) for more details, for the specific requirements, if you want to build for a OS that differs from the one you are currently using.  
+This are the theoretically possible formats see the electron-builder [documentation](https://www.electron.build/multi-platform-build) for more details, for the specific requirements. Especially if you want to build for a OS that differs from the one you are currently using.  
 
 | OS            | Format                                                                |
 | ------------- | --------------------------------------------------------------------- |
