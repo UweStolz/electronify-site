@@ -21,25 +21,24 @@ interface UserAgentOptions {
 
 export default async function setUserAgent(userAgentOptions: UserAgentOptions|RegExp, parentWindow: BrowserWindow):
 Promise<void> {
-  let userAgent: UserAgent;
   try {
-    userAgent = new UserAgent(userAgentOptions);
+    const userAgent = new UserAgent(userAgentOptions);
+    const userAgentToSet = userAgent.toString();
+    if (session.defaultSession) {
+      session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+        // @ts-ignore
+        // eslint-disable-next-line no-param-reassign
+        details.requestHeaders['User-Agent'] = userAgentToSet;
+        callback({ cancel: false, requestHeaders: details.requestHeaders });
+      });
+    }
     await openMessageBox(parentWindow, {
       buttons: ['OK'],
-      message: 'The User-Agent was successfully set.',
+      message: `The User-Agent was successfully set:\n\n${userAgentToSet}`,
       title: 'User-Agent changed',
       type: 'info',
     });
   } catch (err) {
     openErrorBox('Invalid User-Agent', 'The given User-Agent was not valid!');
-    return;
-  }
-  if (session.defaultSession) {
-    session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
-      // @ts-ignore
-      // eslint-disable-next-line no-param-reassign
-      details.requestHeaders['User-Agent'] = userAgent.toString();
-      callback({ cancel: false, requestHeaders: details.requestHeaders });
-    });
   }
 }

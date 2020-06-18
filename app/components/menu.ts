@@ -37,8 +37,13 @@ function buildMenuTemplate(): (MenuItemConstructorOptions | MenuItem)[] {
         },
         {
           click: async (): Promise<void> => {
-            const customUserAgent = await createPrompt(undefined, browserWindow);
-            if (typeof customUserAgent === 'string') {
+            const customUserAgent = await createPrompt({
+              // @ts-ignore - https://github.com/p-sam/electron-prompt/issues/57
+              icon: false,
+              label: 'Please enter a useragent to search for.',
+              title: 'Custom UserAgent',
+            }, browserWindow);
+            if (typeof customUserAgent === 'string' && customUserAgent.length > 0) {
               const regex = new RegExp(customUserAgent);
               setUserAgent(regex, browserWindow);
             }
